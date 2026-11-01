@@ -1,0 +1,4774 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cariDOit | Explore Your Next Step</title>
+
+<style>
+:root {
+  --blue: #1769d2;
+  --navy: #12356b;
+  --orange: #ff8b36;
+  --bg: #f5f8fd;
+  --text: #172b4d;
+  --muted: #64748b;
+  --border: #DFE7F2;
+  --soft-blue: #EAF1FA;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+button, input, select { font: inherit; }
+button, a { cursor: pointer; }
+a { text-decoration: none; color: inherit; }
+.container { width: 92%; max-width: 1100px; margin: auto; }
+
+header {
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav {
+  min-height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--navy);
+}
+
+.logo span {
+  color: var(--orange);
+}
+
+.logo img {
+  width: 150px;
+  height: 45px;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav a { font-size: 14px; font-weight: bold; color: #536580; }
+nav a:hover { color: var(--blue); }
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: bold;
+}
+.primary { background: var(--blue); color: white; }
+.secondary { background: white; border: 1px solid #d4deeb; color: var(--navy); }
+.orange { background: var(--orange); color: #321b0b; }
+
+.hero {
+  padding: 65px 0;
+  background: linear-gradient(120deg, #eaf3ff, white);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 30px;
+  align-items: center;
+}
+.tag {
+  color: var(--blue);
+  background: #dcecff;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.1; }
+h2 { line-height: 1.25; }
+.highlight { color: var(--blue); }
+p { color: var(--muted); }
+.hero p { font-size: 18px; }
+.hero-card, .card, .panel {
+  background: white;
+  padding: 23px;
+  border: 1px solid #e1e8f2;
+  border-radius: 18px;
+}
+.hero-card { box-shadow: 0 15px 40px #12356b12; }
+.hero-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #e8edf5;
+}
+.hero-item:last-child { border: 0; }
+.section { padding: 55px 0; }
+.section-title { text-align: center; margin-bottom: 30px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+.grid-four {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+/* INTERAKSI KARTU DAN TOMBOL */
+.card {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(16, 43, 80, .10);
+}
+
+button,
+.btn,
+.ecosystem-btn,
+.home-hero-btn {
+  transition: transform .2s ease, box-shadow .2s ease,
+              background-color .2s ease;
+}
+
+button:hover,
+.btn:hover,
+.ecosystem-btn:hover,
+.home-hero-btn:hover {
+  transform: translateY(-2px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #E5AD55;
+  outline-offset: 3px;
+}
+
+.icon { font-size: 28px; }
+.card h3 { margin-bottom: 7px; }
+.card p { font-size: 14px; }
+
+.link {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--blue);
+  font-weight: bold;
+}
+.band {
+  padding: 30px;
+  border-radius: 22px;
+  background: var(--navy);
+  color: white;
+}
+.band p { color: #d3def0; }
+.page { display: none; padding: 38px 0 65px; min-height: 65vh; }
+.page.active { display: block; }
+.page-head {
+  background: linear-gradient(120deg, #eaf3ff, #fff5e9);
+  border: 1px solid #e0eafa;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 22px;
+}
+.page-head h1 { font-size: 38px; margin: 12px 0; }
+.panel { margin-bottom: 17px; }
+.notice {
+  padding: 14px;
+  background: #fff5e8;
+  border: 1px solid #ffdfbd;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.form-field { margin: 13px 0; }
+.form-field label { display: block; font-weight: bold; margin-bottom: 5px; }
+.form-field input, .form-field select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d4deeb;
+  border-radius: 9px;
+}
+.search { display: flex; gap: 10px; margin-bottom: 18px; }
+.search input { flex: 1; min-width: 0; padding: 11px; border: 1px solid #d4deeb; border-radius: 9px; }
+.chat-box { background: white; border: 1px solid #e1e8f2; border-radius: 16px; overflow: hidden; }
+.chat-title { padding: 15px; background: #eaf3ff; font-weight: bold; }
+.messages { height: 250px; overflow: auto; padding: 15px; }
+.message { padding: 10px 13px; background: #eef3f9; border-radius: 12px; margin-bottom: 10px; width: fit-content; max-width: 85%; }
+.message.mine { background: #dcecff; margin-left: auto; }
+.chat-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #e1e8f2; }
+.chat-form input { flex: 1; min-width: 0; padding: 10px; border: 1px solid #d4deeb; border-radius: 9px; }
+footer { background: #0e2850; color: white; padding: 30px 0; }
+footer p, footer a { color: #c8d6e9; font-size: 14px; }
+footer a { display: block; margin: 6px 0; }
+.hidden { display: none !important; }
+
+@media(max-width: 800px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .grid-four { grid-template-columns: repeat(2, 1fr); }
+  .nav { padding: 12px 0; }
+}
+@media(max-width: 600px) {
+  .grid, .grid-four { grid-template-columns: 1fr; }
+  nav { gap: 10px; }
+  nav a { font-size: 12px; }
+  .hero { padding: 40px 0; }
+  .page-head h1 { font-size: 32px; }
+}
+
+
+
+.logo img {
+  width: 150px;
+  height: 45px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== CASHFLOW QUADRANT: PERAPIAN LAYOUT ===== */
+
+#ebsi .container {
+  width: min(100% - 32px, 1100px);
+  margin: 0 auto;
+}
+
+#ebsi .page-head {
+  margin-bottom: 28px;
+}
+
+#ebsi .section {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+#ebsi .panel {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+  border-radius: 18px;
+  overflow-wrap: anywhere;
+}
+
+#ebsi h1,
+#ebsi h2,
+#ebsi h3 {
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+#ebsi p,
+#ebsi li {
+  line-height: 1.75;
+}
+
+#ebsi .grid-four {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+#ebsi .card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  padding: 24px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ebsi .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(14, 40, 80, 0.10);
+}
+
+#ebsi #ebsiDetail {
+  scroll-margin-top: 24px;
+}
+
+#ebsi #ebsiText h3 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+#ebsi #ebsiText p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+#ebsi #ebsiText ul {
+  padding-left: 24px;
+}
+
+#ebsi #ebsiText li {
+  margin-bottom: 6px;
+}
+
+#ebsi .panel table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#ebsi .panel th,
+#ebsi .panel td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+#ebsi .panel th {
+  background: #f1f6fd;
+}
+
+@media (max-width: 600px) {
+  #ebsi .container {
+    width: calc(100% - 24px);
+  }
+
+  #ebsi .grid-four {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  #ebsi .panel,
+  #ebsi .card {
+    padding: 18px;
+  }
+
+  #ebsi h1 {
+    font-size: 28px;
+  }
+
+  #ebsi h2 {
+    font-size: 22px;
+  }
+
+  #ebsi .panel th,
+  #ebsi .panel td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}
+
+
+.cashflow-illustration {
+  width: 100%;
+  max-width: 900px;
+  margin: 28px auto 36px;
+  text-align: center;
+}
+
+.cashflow-illustration .image-caption {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #17365d;
+}
+
+.cashflow-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  border: 1px solid #dbe5f2;
+  border-radius: 10px;
+  background: #fff;
+  color: #17365d;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-home:hover {
+  background: #eef5ff;
+}
+
+
+/* Dropdown menu pada header */
+.nav-dropdown {
+  position: relative;
+  color: #536580;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav-dropdown summary {
+  cursor: pointer;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.nav-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown summary::after {
+  content: " ▾";
+}
+
+.nav-dropdown summary {
+  padding: 9px 11px;
+  border-radius: 8px;
+  transition: background .2s ease, color .2s ease;
+}
+
+.nav-dropdown summary:hover,
+.nav-dropdown[open] summary {
+  color: var(--blue);
+  background: var(--soft-blue);
+}
+
+.dropdown-content a {
+  transition: background .2s ease, color .2s ease;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 220px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px #12356b18;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 12px;
+  color: #536580;
+  border-radius: 7px;
+  white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+  background: #eaf3ff;
+  color: var(--blue);
+}
+
+@media (max-width: 800px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .dropdown-content {
+    left: auto;
+    right: 0;
+  }
+}
+
+/* ===== BERANDA cariDOit ===== */
+.home-hero {
+  padding: 64px 38px;
+  margin-bottom: 34px;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(130deg, #102b50, #1d4c7c);
+}
+
+.home-eyebrow {
+  display: inline-block;
+  color: #d99b45;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  line-height: 1.7;
+}
+
+.home-hero h1 {
+  max-width: 750px;
+  margin: 14px 0;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.15;
+}
+
+.home-hero p {
+  max-width: 650px;
+  color: #e1eaf5;
+  line-height: 1.8;
+}
+
+.home-hero-btn,
+.ecosystem-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px 18px;
+  border-radius: 9px;
+  background: #173e68;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform .2s, background .2s;
+}
+
+.home-hero-btn {
+  background: #f2b65c;
+  color: #102b50;
+}
+
+.home-hero-btn:hover,
+.ecosystem-btn:hover {
+  transform: translateY(-2px);
+  opacity: .9;
+}
+
+.home-section {
+  margin: 44px 0;
+}
+
+.home-heading {
+  max-width: 750px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.home-heading h2,
+.financial-system h2,
+.foundation-section h2 {
+  margin: 10px 0;
+  color: #17345f;
+  font-size: clamp(25px, 3vw, 34px);
+}
+
+.home-heading p,
+.system-intro {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.ecosystem-card {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(15, 39, 70, .05);
+}
+
+.ecosystem-visual {
+  height: 100px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.ecosystem-visual img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.atur-visual:hover img {
+  transform: scale(1.12);
+}
+
+.atur-visual {
+  height: 180px;
+  min-height: 180px;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cci-visual {
+  height: 180px;
+  min-height: 180px;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cci-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.cci-visual:hover img {
+  transform: scale(1.12);
+}
+
+
+.academy-visual {
+  height: 180px;
+  min-height: 180px;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.academy-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.academy-visual:hover img {
+  transform: scale(1.12);
+}
+
+.ecosystem-symbol {
+  color: #17345f;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.ecosystem-body {
+  padding: 24px;
+}
+
+.ecosystem-label {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.ecosystem-body h3,
+.feature-card h3,
+.system-card h3 {
+  margin: 10px 0;
+  color: #17345f;
+}
+
+.ecosystem-body p,
+.feature-card p,
+.system-card p,
+.foundation-section p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.ecosystem-btn {
+  background: #17345f;
+}
+
+.academy-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(180px, .7fr) 1.3fr;
+}
+
+.academy-card .ecosystem-visual {
+  height: 100%;
+}
+
+.academy-card .ecosystem-body {
+  align-self: center;
+}
+
+.features-section {
+  padding: 38px 28px;
+  border-radius: 20px;
+  background: #f6f8fc;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.feature-card {
+  padding: 21px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.feature-number {
+  color: #d99b45;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.financial-system {
+  margin: 44px 0;
+  padding: 36px 28px;
+  border-radius: 20px;
+  background: #edf3fa;
+  text-align: center;
+}
+
+.financial-system > p {
+  max-width: 800px;
+  margin: 12px auto;
+  color: #52657c;
+  line-height: 1.8;
+}
+
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin: 28px 0;
+  text-align: left;
+}
+
+.system-card {
+  padding: 20px;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.financial-tagline {
+  margin: 28px 0 12px;
+  color: #17345f;
+  line-height: 1.7;
+}
+
+.mission-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.mission-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.mission-item > span {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e8effa;
+  color: #17345f;
+  font-weight: 800;
+}
+
+.mission-item p {
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.prove-section {
+  padding: 35px 25px;
+  border-radius: 18px;
+  background: #f6f8fc;
+}
+
+.foundation-section {
+  padding: 32px;
+  border-left: 4px solid #d99b45;
+  border-radius: 12px;
+  background: #fffaf1;
+}
+
+.foundation-section p {
+  max-width: 900px;
+}
+
+.home-cta {
+  margin: 44px 0 20px;
+  padding: 42px 25px;
+  border-radius: 20px;
+  background: #102b50;
+  color: #fff;
+  text-align: center;
+}
+
+.home-cta h2 {
+  margin: 12px 0;
+  font-size: clamp(25px, 4vw, 34px);
+}
+
+.home-cta > p {
+  color: #e1eaf5;
+  line-height: 1.8;
+}
+
+.home-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.home-cta-actions a {
+  display: inline-block;
+  padding: 12px 19px;
+  border: 1px solid #fff;
+  border-radius: 9px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.home-cta-actions a:first-child {
+  border-color: #f2b65c;
+  background: #f2b65c;
+  color: #102b50;
+}
+
+@media (max-width: 900px) {
+  .features-grid,
+  .system-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .home-hero {
+    padding: 38px 23px;
+  }
+
+  .ecosystem-grid,
+  .features-grid,
+  .system-grid,
+  .mission-list {
+    grid-template-columns: 1fr;
+  }
+
+  .academy-card {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .academy-card .ecosystem-visual {
+    min-height: 125px;
+  }
+
+  .features-section,
+  .financial-system {
+    padding: 26px 18px;
+  }
+
+  .ecosystem-body,
+  .foundation-section {
+    padding: 22px;
+  }
+}
+.ecosystem-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ecosystem-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* Kotak pengalaman dan portofolio */
+#internForm textarea[name="portofolio"] {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 14px 16px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #172b4d;
+  background: #fff;
+  border: 1px solid #d5deeb;
+  border-radius: 12px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#internForm textarea[name="portofolio"]:focus {
+  border-color: #2167d5;
+  box-shadow: 0 0 0 3px rgba(33, 103, 213, 0.12);
+}
+
+#internForm textarea[name="portofolio"]::placeholder {
+  color: #8793a5;
+}
+
+/* Jarak antarbagian di halaman Business Opportunity */
+#bisnis .panel {
+  margin-bottom: 28px;
+}
+
+#bisnis .grid {
+  gap: 20px;
+}
+
+#bisnis .notice {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+#bisnis .panel > h2 {
+  margin-bottom: 20px;
+}
+
+#bisnis .panel > p {
+  line-height: 1.7;
+}
+
+.vision-intro,
+.vision-image-panel {
+  margin-bottom: 24px;
+}
+
+.vision-intro h2,
+.vision-image-panel h2 {
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.vision-intro p,
+.vision-image-panel p {
+  line-height: 1.8;
+}
+
+.vision-main-image {
+  display: block;
+  width: 100%;
+  max-width: 950px;
+  height: auto;
+  margin: 24px auto 8px;
+  border-radius: 14px;
+  border: 1px solid #e1e8f2;
+}
+
+/* ===== TAMPILAN LAYAR BIRU VISION ===== */
+.vision-label {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  background: #eaf3ff;
+  color: #1769d2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.vision-components,
+.vision-income {
+  margin: 25px 0 28px;
+  padding: 28px;
+}
+
+.vision-components h2,
+.vision-income h2 {
+  margin-top: 14px;
+  color: #12356b;
+}
+
+.vision-component-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.vision-component-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid #dce6f3;
+  border-radius: 15px;
+  background: #f8fbff;
+  color: #12356b;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vision-component-card:hover,
+.vision-component-card.active {
+  border-color: #1769d2;
+  background: #eaf3ff;
+}
+
+.vision-component-icon {
+  font-size: 26px;
+}
+
+.vision-component-card small {
+  color: #64748b;
+}
+
+.vision-component-detail {
+  margin-top: 18px;
+  padding: 22px;
+  border-left: 4px solid #1769d2;
+  border-radius: 14px;
+  background: #f5f8fd;
+}
+
+.vision-component-detail h3 {
+  margin-top: 0;
+  color: #12356b;
+}
+
+.vision-component-detail p {
+  margin-bottom: 0;
+  line-height: 1.8;
+}
+
+.vision-year-tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 9px;
+  margin: 24px 0;
+}
+
+.vision-year {
+  padding: 11px 5px;
+  border: 1px solid #dce6f3;
+  border-radius: 10px;
+  background: white;
+  color: #12356b;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.vision-year:hover,
+.vision-year.active {
+  background: #1769d2;
+  border-color: #1769d2;
+  color: white;
+}
+
+.vision-income-result {
+  padding: 30px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #102b50, #1769d2);
+  color: white;
+}
+
+.vision-income-result span {
+  color: #dcecff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.vision-income-result h3 {
+  margin: 12px 0;
+  color: white;
+  font-size: clamp(28px, 4vw, 42px);
+  overflow-wrap: anywhere;
+}
+
+.vision-income-result p {
+  margin-bottom: 0;
+  color: #e3edff;
+}
+
+@media (max-width: 650px) {
+  .vision-components,
+  .vision-income {
+    padding: 19px;
+  }
+
+  .vision-component-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-year-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .vision-income-result {
+    padding: 22px;
+  }
+}
+
+/* FORMULIR */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(36, 87, 167, .12);
+  outline: none;
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-field label {
+  color: var(--navy);
+}
+
+.transport-box{margin-top:24px;padding:22px;border:1px solid var(--border);border-radius:16px;background:var(--soft-blue)}
+.transport-zones{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.transport-zone{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:10px;font-weight:bold;cursor:pointer;transition:border-color .2s,background .2s}
+.transport-zone:has(input:checked){border-color:var(--blue);background:#eaf3ff}
+.transport-total{font-size:20px;font-weight:bold;color:var(--navy)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+.to-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border:0;border-radius:50%;background:var(--blue);color:#fff;font-size:20px;box-shadow:0 8px 20px rgba(18,53,107,.25);opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;z-index:20}
+.to-top.visible{opacity:1;pointer-events:auto}
+
+.vision-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;height:150px;margin:0 0 22px}
+.vision-bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;padding:0;border:0;background:none;gap:6px;color:#64748b}
+.vision-bar-fill{width:100%;border-radius:8px 8px 0 0;background:#c9dcf5;transition:height .5s ease,background .2s}
+.vision-bar.active .vision-bar-fill,.vision-bar:hover .vision-bar-fill{background:var(--blue)}
+
+.accordion{margin:10px 0;border:1px solid var(--border);border-radius:12px;background:#fff;overflow:hidden}
+.accordion summary{padding:14px 18px;font-weight:bold;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.accordion summary::-webkit-details-marker{display:none}
+.accordion summary::after{content:"+";font-size:20px;color:var(--blue)}
+.accordion[open] summary::after{content:"−"}
+.accordion[open] summary{background:var(--soft-blue)}
+.accordion ul{margin:0;padding:14px 18px 14px 38px}
+
+.vision-income-result{margin-bottom:20px}
+.vision-income .notice{margin-top:0}
+
+.bsp-block{margin:24px 0}
+.bsp-block h2{margin-top:10px;color:#12356b}
+.bsp-table{width:100%;border-collapse:collapse;text-align:left}
+.bsp-table th,.bsp-table td{padding:12px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.6}
+.bsp-table th{background:#f1f6fd;color:var(--navy)}
+.bsp-table td:first-child{font-weight:bold;color:var(--navy)}
+.bsp-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.bsp-tab{padding:11px 18px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--navy);font-weight:bold}
+.bsp-tab.active,.bsp-tab:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.bsp-path{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.bsp-col{padding:20px;border:1px solid var(--border);border-radius:14px;background:#f8fbff}
+.bsp-col h3{margin-top:0;color:var(--navy)}
+.bsp-col ul{margin:0;padding-left:20px}
+.bsp-col li{margin-bottom:8px;line-height:1.7;color:var(--muted)}
+.bsp-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.bsp-stat{padding:18px;border:1px solid var(--border);border-radius:14px;background:#f8fbff}
+.bsp-stat strong{display:block;font-size:22px;color:var(--blue);overflow-wrap:anywhere}
+.bsp-stat p{margin:6px 0 0;font-size:14px}
+@media(max-width:700px){.bsp-path,.bsp-stats{grid-template-columns:1fr}}
+
+.agent-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.agent-chip{padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:#fff;color:var(--navy);font-weight:bold}
+.agent-chip.active,.agent-chip:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.agent-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn-wa{background:#25d366;color:#05301a}
+
+.quick-replies{display:flex;flex-wrap:wrap;gap:8px;padding:10px 12px;border-top:1px solid #e1e8f2;background:#f8fbff}
+.quick-reply{padding:7px 12px;border:1px solid var(--border);border-radius:18px;background:#fff;color:var(--navy);font-size:13px;font-weight:bold}
+.quick-reply:hover{background:var(--soft-blue)}
+.msg-time{display:block;margin-top:4px;font-size:11px;color:#8793a5}
+.message.typing{color:var(--muted);font-style:italic}
+
+#bsp .panel.section{padding:28px;margin:24px 0}
+#bsp .panel.section h2{margin-top:0}
+
+.back-prev{margin-right:10px}
+
+.form-field input[type="checkbox"]{width:auto;margin-right:8px;vertical-align:middle}
+
+.intern-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0 24px}
+.intern-step{text-align:center;padding:12px 8px;border:1px solid var(--border);border-radius:12px;background:#fff}
+.intern-step span{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;background:#e8effa;color:var(--navy);font-weight:bold}
+.intern-step p{margin:6px 0 0;font-size:13px}
+.intern-step.done{border-color:var(--blue);background:#eaf3ff}
+.intern-step.done span{background:var(--blue);color:#fff}
+.intern-step.current{border-color:var(--orange)}
+.intern-step.current span{background:var(--orange);color:#321b0b}
+@media(max-width:600px){.intern-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.intern-steps{grid-template-columns:repeat(7,minmax(0,1fr))}
+@media(max-width:900px){.intern-steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:600px){.intern-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.status-box{margin:0 0 24px;padding:20px;border:1px solid var(--border);border-radius:14px;background:var(--soft-blue)}
+.status-box h3{margin:0 0 6px;color:var(--navy)}
+.status-row{display:flex;gap:10px;flex-wrap:wrap}
+.status-row input{flex:1;min-width:200px;padding:11px 14px;border:1px solid var(--border);border-radius:10px}
+#statusMsg{margin:12px 0 0;font-weight:bold;color:var(--navy)}
+
+.form-field input[type="file"]{padding:10px;background:#fff}
+.file-hint{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+
+/* --- AUTH & USER PROFILE IN NAVBAR --- */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-login-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--blue);
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 13px;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.btn-login-nav:hover {
+  background: var(--navy);
+  transform: translateY(-2px);
+}
+.user-profile-badge {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: #eaf3ff;
+  border: 1px solid #c8dcf7;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--navy);
+}
+.user-profile-badge .avatar-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+.btn-logout {
+  background: none;
+  border: none;
+  color: #e53e3e;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.btn-logout:hover {
+  background: #fee2e2;
+}
+
+/* --- AUTH ENTRY GATE / LOGIN MODAL --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(18, 53, 107, 0.96), rgba(15, 23, 42, 0.98));
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.auth-locked {
+  overflow: hidden;
+}
+body.auth-locked header,
+body.auth-locked main,
+body.auth-locked footer,
+body.auth-locked .floating-chat-trigger,
+body.auth-locked #toTop {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+.auth-modal {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 440px;
+  padding: 36px 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  position: relative;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.active .auth-modal {
+  transform: translateY(0) scale(1);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-close-btn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.auth-header h2 {
+  margin: 8px 0 4px;
+  color: var(--navy);
+  font-size: 24px;
+}
+.auth-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.auth-tabs {
+  display: flex;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+.auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #64748b;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+}
+.auth-tab.active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+.auth-demo-badge {
+  background: #eff6ff;
+  border: 1px dashed #93c5fd;
+  color: #1d4ed8;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* --- FLOATING CHAT WIDGET --- */
+.floating-chat-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 80px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--navy));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 24px rgba(23, 105, 210, 0.35);
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s;
+}
+.floating-chat-trigger:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 12px 28px rgba(23, 105, 210, 0.45);
+}
+.chat-unread-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background: #ff8b36;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+}
+.floating-chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(18, 53, 107, 0.22);
+  border: 1px solid #dce7f5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.floating-chat-window.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.floating-chat-header {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #ffffff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.floating-chat-agent-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.floating-agent-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.floating-agent-text h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+.floating-agent-text small {
+  font-size: 11px;
+  color: #b9d8ff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.online-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+}
+.floating-chat-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.floating-chat-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.floating-chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f8fbff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.floating-chat-body .message {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 82%;
+  word-wrap: break-word;
+}
+.floating-chat-body .message:not(.mine) {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.floating-chat-body .message.mine {
+  background: var(--blue);
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.floating-chat-body .message.mine .msg-time {
+  color: #dbeafe;
+}
+.floating-chat-quick {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-top: 1px solid #eef2f7;
+}
+.floating-chat-quick button {
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 6px 11px;
+  border-radius: 16px;
+  background: #eef5ff;
+  color: var(--blue);
+  border: 1px solid #d4e4fa;
+  font-weight: 600;
+  cursor: pointer;
+}
+.floating-chat-quick button:hover {
+  background: var(--blue);
+  color: #fff;
+}
+.floating-chat-footer {
+  padding: 10px 12px;
+  background: #ffffff;
+  border-top: 1px solid #e5eaf2;
+  display: flex;
+  gap: 8px;
+}
+.floating-chat-footer input {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1px solid #d4deeb;
+  border-radius: 20px;
+  font-size: 13px;
+  outline: none;
+}
+.floating-chat-footer input:focus {
+  border-color: var(--blue);
+}
+.floating-chat-footer button {
+  background: var(--blue);
+  color: #ffffff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+.floating-wa-btn-wrap {
+  padding: 8px 14px;
+  background: #f1fbf5;
+  border-top: 1px dashed #bcf0d3;
+  display: flex;
+  justify-content: center;
+}
+.floating-wa-btn {
+  background: #25d366;
+  color: #033f20;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.floating-wa-btn:hover {
+  background: #1eb956;
+}
+
+/* --- MINI QUIZ / ASESMEN KUADRAN --- */
+.quiz-box {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  margin: 24px 0;
+  box-shadow: 0 4px 16px rgba(18, 53, 107, 0.05);
+}
+.quiz-step {
+  display: none;
+}
+.quiz-step.active {
+  display: block;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 18px 0;
+}
+.quiz-opt-btn {
+  padding: 14px 18px;
+  border: 1px solid #dce6f3;
+  border-radius: 12px;
+  background: #f8fbff;
+  color: var(--navy);
+  font-weight: 600;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.quiz-opt-btn:hover {
+  border-color: var(--blue);
+  background: #eaf3ff;
+  transform: translateX(4px);
+}
+.quiz-result-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #12356b, #1769d2);
+  color: #ffffff;
+  margin-top: 18px;
+}
+.quiz-result-card h3 {
+  margin-top: 0;
+  color: #fff;
+}
+.quiz-result-card p {
+  color: #e2edff;
+  line-height: 1.7;
+}
+
+/* --- USER DASHBOARD MODAL --- */
+.dashboard-modal {
+  max-width: 500px;
+}
+.user-stat-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.stat-pill-active {
+  background: #dcfce7;
+  color: #15803d;
+}
+.dashboard-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+.dashboard-activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fbff;
+  font-size: 13px;
+}
+
+/* --- IMAGE LIGHTBOX --- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  padding: 20px;
+}
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.btn-zoom-img {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-zoom-img:hover {
+  background: #f1f5f9;
+}
+
+/* --- TOAST NOTIFICATIONS --- */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+.toast {
+  min-width: 280px;
+  max-width: 380px;
+  background: #ffffff;
+  color: var(--text);
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(18, 53, 107, 0.18);
+  border-left: 5px solid var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast.toast-success {
+  border-left-color: #10b981;
+}
+.toast.toast-error {
+  border-left-color: #ef4444;
+}
+.toast.toast-warning {
+  border-left-color: #f59e0b;
+}
+
+/* --- MOBILE HAMBURGER BUTTON --- */
+.nav-toggle-btn {
+  display: none;
+  background: none;
+  border: 1px solid #d4deeb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 20px;
+  color: var(--navy);
+  cursor: pointer;
+}
+@media (max-width: 960px) {
+  .nav-toggle-btn {
+    display: block;
+  }
+  .nav {
+    flex-wrap: wrap;
+    position: relative;
+  }
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 14px;
+    border-top: 1px solid #eef2f7;
+    margin-top: 8px;
+  }
+  nav.mobile-open {
+    display: flex;
+  }
+  .nav-auth {
+    justify-content: center;
+    padding-top: 8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home" onclick="showPage('home'); return false;">
+      <img src="images/logo-caridoit.png" alt="Logo cariDOit">
+    </a>
+
+    <button type="button" class="nav-toggle-btn" onclick="toggleMobileNav()" aria-label="Toggle navigasi">
+      ☰
+    </button>
+
+    <nav id="mainNav">
+      <a href="#home" onclick="showPage('home'); return false;">
+        Beranda
+      </a>
+
+      <details class="nav-dropdown">
+        <summary>Komunitas</summary>
+        <div class="dropdown-content">
+          <a href="https://aturdoit.com/community" target="_blank" rel="noopener">
+            Cashflow Club Indonesia (CCI)
+          </a>
+          <a href="https://aturdoit.com" target="_blank" rel="noopener">
+            aturDOit
+          </a>
+          <a href="#academy" onclick="showHomeSection('academy'); return false;">
+            aturDOit Academy
+          </a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown">
+        <summary>Edukasi Finansial</summary>
+        <div class="dropdown-content">
+          <a href="#ebsi" onclick="showPage('ebsi'); return false;">
+            Cashflow Quadrant (EBSI)
+          </a>
+          <a href="#layar" onclick="showPage('layar'); return false;">
+            Layar Biru Vision
+          </a>
+          <a href="#bsp" onclick="showPage('bsp'); return false;">
+            Ringkasan Materi BSP
+          </a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown">
+        <summary>Peluang Karier</summary>
+        <div class="dropdown-content">
+          <a href="#jalur" onclick="showPage('jalur'); return false;">
+            Pilih Jalur Sesuai Status
+          </a>
+          <a href="#intern" onclick="showPage('intern'); return false;">
+            Program Magang Vision
+          </a>
+          <a href="#bisnis" onclick="showPage('bisnis'); return false;">
+            Business Opportunity Agen
+          </a>
+          <a href="#agen" onclick="showPage('agen'); return false;">
+            Cari & Hubungi Agen
+          </a>
+        </div>
+      </details>
+
+      <a href="#tentang" onclick="showHomeSection('tentang'); return false;">
+        Tentang Kami
+      </a>
+
+      <div class="nav-auth">
+        <button type="button" class="btn-login-nav" id="navLoginBtn" onclick="openAuthModal()">
+          <span>👤</span> Masuk
+        </button>
+        <div class="user-profile-badge" id="navUserBadge" onclick="openUserDashboard()" style="cursor:pointer;" title="Klik untuk membuka Dashboard Pengguna">
+          <span class="avatar-circle" id="navAvatarChar">U</span>
+          <span id="navUserName">User</span>
+          <button type="button" class="btn-logout" onclick="event.stopPropagation(); logoutUser()" title="Keluar">Keluar</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="page active">
+  
+<!-- BERANDA cariDOit -->
+<div class="home-hero">
+  <span class="home-eyebrow">DOit CORPORATION</span>
+  <h1>Building a Better Financial Future</h1>
+  <p>
+    Mengenal ekosistem digital finansial yang menghubungkan
+    individu, profesional, komunitas, dan berbagai peluang
+    untuk bertumbuh bersama.
+  </p>
+  <a href="#ecosystem"
+     class="home-hero-btn"
+     onclick="showHomeSection('ecosystem'); return false;">
+     Jelajahi Ekosistem →
+  </a>
+</div>
+
+<!-- EKOSISTEM DOit -->
+<div id="ecosystem" class="home-section">
+  <div class="home-heading">
+    <span class="home-eyebrow">DISCOVER OUR ECOSYSTEM</span>
+    <h2>Kenali Ekosistem DOit</h2>
+    <p>
+      Temukan komunitas dan platform yang mendukung perjalanan
+      finansial serta pengembangan diri Anda.
+    </p>
+  </div>
+
+  <div class="ecosystem-grid">
+
+    <!-- CCI -->
+    <article class="ecosystem-card">
+      <div class="ecosystem-visual cci-visual">
+        <img src="images/logo-cci.png" alt="Logo CCI">
+      </div>
+      <div class="ecosystem-body">
+        <span class="ecosystem-label">COMMUNITY</span>
+        <h3>Cashflow Club Indonesia</h3>
+        <p>
+          Cashflow Club Indonesia (CCI) adalah komunitas yang
+          mempertemukan individu-individu yang memiliki semangat
+          untuk terus belajar, bertumbuh, dan membangun masa depan
+          finansial yang lebih baik.
+        </p>
+        <p>
+          Melalui edukasi, networking, dan praktik nyata, CCI
+          menjadi tempat untuk berkembang bersama menuju
+          kehidupan yang lebih berkualitas.
+        </p>
+        <a
+          href="https://aturdoit.com/community"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ecosystem-btn">
+          Kenali CCI <span>→</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- aturDOit -->
+    <article class="ecosystem-card">
+      <div class="ecosystem-visual atur-visual">
+        <img src="images/logo-aturdoit.png" alt="Logo aturDOit">
+      </div>
+      <div class="ecosystem-body">
+        <span class="ecosystem-label">FINANCIAL PLATFORM</span>
+        <h3>aturDOit</h3>
+        <p>
+          aturDOit adalah platform digital yang dirancang untuk
+          membantu setiap orang mengelola keuangan secara lebih
+          terstruktur, memahami kondisi finansial, serta mengambil
+          keputusan yang lebih baik untuk mencapai tujuan keuangan.
+        </p>
+        <p>
+          Lebih dari sekadar aplikasi pencatatan keuangan,
+          aturDOit adalah partner yang mendampingi perjalanan
+          Anda menuju kemandirian finansial.
+        </p>
+        <a
+          href="https://aturdoit.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ecosystem-btn">
+          Jelajahi aturDOit <span>→</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- aturDOit Academy -->
+    <article id="academy" class="ecosystem-card academy-card">
+      <div class="ecosystem-visual academy-visual">
+         <img src="images/logo-aturdoit-academy.png" alt="Logo aturDOit Academy">
+      </div>
+      <div class="ecosystem-body">
+        <span class="ecosystem-label">FINANCIAL EDUCATION</span>
+        <h3>aturDOit Academy</h3>
+        <p>
+          Bagian edukasi dalam ekosistem aturDOit yang mendukung
+          pembelajaran finansial melalui materi perencanaan
+          keuangan, investasi, proteksi, perpajakan, pensiun,
+          hingga legacy planning.
+        </p>
+        <p>
+          Pengalaman belajar juga didukung oleh edukasi melalui
+          aturDOit Academy dan komunitas CCI.
+        </p>
+        <a
+          href="https://aturdoit.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ecosystem-btn">
+          Pelajari aturDOit <span>→</span>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- FITUR aturDOit -->
+<div class="home-section features-section">
+  <div class="home-heading">
+    <span class="home-eyebrow">ONE APP FOR YOUR FINANCIAL JOURNEY</span>
+    <h2>Key Features of aturDOit</h2>
+    <p>
+      Berbagai fitur untuk membantu mengelola dan mengembangkan
+      kehidupan finansial Anda.
+    </p>
+  </div>
+
+  <div class="features-grid">
+    <article class="feature-card">
+      <span class="feature-number">01</span>
+      <h3>Cashflow Management</h3>
+      <p>
+        Catat setiap pemasukan dan pengeluaran untuk membangun
+        kebiasaan keuangan yang sehat.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">02</span>
+      <h3>Financial Health Analysis</h3>
+      <p>
+        Pahami kondisi keuangan melalui analisis, rasio keuangan,
+        dan Financial Score yang mudah dipahami.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">03</span>
+      <h3>Asset &amp; Liability Management</h3>
+      <p>
+        Kelola aset, investasi, utang, dan piutang dalam satu
+        dashboard yang terintegrasi.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">04</span>
+      <h3>Financial Goal Planning</h3>
+      <p>
+        Tetapkan target keuangan dan pantau progres pencapaiannya
+        secara bertahap.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">05</span>
+      <h3>Financial Advisor Marketplace</h3>
+      <p>
+        Terhubung dengan para profesional untuk mendapatkan
+        konsultasi sesuai kebutuhan Anda.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">06</span>
+      <h3>Learning Center</h3>
+      <p>
+        Pelajari financial planning, investasi, proteksi,
+        perpajakan, pensiun, hingga legacy planning.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">07</span>
+      <h3>Community &amp; Challenge</h3>
+      <p>
+        Bertumbuh bersama komunitas melalui challenge,
+        aktivitas, dan edukasi yang berkelanjutan.
+      </p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">08</span>
+      <h3>Financial Journey</h3>
+      <p>
+        Pantau perkembangan kondisi keuangan dari waktu ke waktu
+        menuju Financial Independence.
+      </p>
+    </article>
+  </div>
+</div>
+
+<!-- FINANCIAL OPERATING SYSTEM -->
+<div class="financial-system">
+  <span class="home-eyebrow">YOUR FINANCIAL JOURNEY STARTS HERE</span>
+  <h2>Lebih dari Sekadar Pencatatan Cashflow</h2>
+  <p class="system-intro">
+    Setiap perjalanan menuju masa depan finansial yang lebih baik
+    dimulai dari satu langkah sederhana, yaitu mengenali kondisi
+    keuangan Anda hari ini.
+  </p>
+  <p>
+    aturDOit bukan sekadar aplikasi pencatat cashflow,
+    tetapi sebuah <strong>Financial Operating System</strong>.
+  </p>
+
+  <div class="system-grid">
+    <article class="system-card">
+      <h3>01. Manage</h3>
+      <p>Pencatatan dan pengelolaan keuangan.</p>
+    </article>
+    <article class="system-card">
+      <h3>02. Analyze</h3>
+      <p>Financial Health, Financial Score, dan analisis rasio.</p>
+    </article>
+    <article class="system-card">
+      <h3>03. Learn</h3>
+      <p>Edukasi melalui aturDOit Academy dan CCI.</p>
+    </article>
+    <article class="system-card">
+      <h3>04. Grow</h3>
+      <p>
+        Konsultasi dengan advisor, komunitas, serta peluang
+        pengembangan karier.
+      </p>
+    </article>
+  </div>
+
+  <h3 class="financial-tagline">
+    Manage Better. Grow Smarter. Achieve Financial Independence.
+  </h3>
+  <a
+    href="https://aturdoit.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="ecosystem-btn">
+    Kunjungi aturDOit →
+  </a>
+</div>
+
+<!-- MISI DOit CORPORATION -->
+<div id="tentang" class="home-section mission-section">
+  <div class="home-heading">
+    <span class="home-eyebrow">DOit CORPORATION</span>
+    <h2>Our Mission</h2>
+    <p>
+      Misi DOit Corporation dalam membangun ekosistem digital
+      finansial global.
+    </p>
+  </div>
+
+  <div class="mission-list">
+    <article class="mission-item">
+      <span>01</span>
+      <p>
+        Membangun platform digital global yang membantu masyarakat
+        memperoleh, mengelola, dan mengembangkan kehidupan finansialnya.
+      </p>
+    </article>
+
+    <article class="mission-item">
+      <span>02</span>
+      <p>
+        Mengembangkan ekosistem yang menghubungkan individu,
+        profesional, komunitas, institusi, dan dunia usaha melalui
+        teknologi yang inovatif.
+      </p>
+    </article>
+
+    <article class="mission-item">
+      <span>03</span>
+      <p>
+        Memberdayakan mentor, advisor, agent, dan profesional untuk
+        memberikan layanan yang berkualitas dengan dukungan
+        teknologi dan AI.
+      </p>
+    </article>
+
+    <article class="mission-item">
+      <span>04</span>
+      <p>
+        Menciptakan peluang ekonomi yang lebih luas melalui platform
+        digital yang mendukung karier, bisnis, investasi,
+        dan kewirausahaan.
+      </p>
+    </article>
+
+    <article class="mission-item">
+      <span>05</span>
+      <p>
+        Menyediakan solusi yang aman, transparan, dan sesuai dengan
+        regulasi di setiap negara tempat DOit Corporation beroperasi.
+      </p>
+    </article>
+
+    <article class="mission-item">
+      <span>06</span>
+      <p>
+        Membangun perusahaan digital global yang efisien,
+        berbasis data, dan berorientasi pada inovasi berkelanjutan.
+      </p>
+    </article>
+
+    <article class="mission-item">
+      <span>07</span>
+      <p>
+        Menghasilkan nilai ekonomi yang berkelanjutan untuk mendukung
+        dampak sosial melalui kasihDOit Foundation, sehingga
+        pertumbuhan bisnis dapat berjalan seiring dengan kontribusi
+        nyata bagi masyarakat.
+      </p>
+    </article>
+  </div>
+</div>
+
+<!-- PROVE / FINANCIAL LIFE ECOSYSTEM -->
+<div class="home-section prove-section">
+  <div class="home-heading">
+    <span class="home-eyebrow">DOit CORPORATION</span>
+    <h2>PROVE — Financial Life Ecosystem</h2>
+    <h3>Global Digital Financial Ecosystem Company</h3>
+    <p>
+      DOit Corporation memiliki misi memberdayakan masyarakat
+      melalui lima tahapan kehidupan finansial.
+    </p>
+  </div>
+</div>
+
+<!-- KASIHDOit FOUNDATION -->
+<div class="home-section foundation-section">
+  <span class="home-eyebrow">SOCIAL IMPACT</span>
+  <h2>kasihDOit Foundation</h2>
+  <p>
+    kasihDOit Foundation adalah organisasi nirlaba yang dibentuk
+    untuk mengembalikan manfaat dari pertumbuhan ekosistem DOit
+    kepada masyarakat melalui pendidikan, pemberdayaan ekonomi,
+    bantuan kemanusiaan, dan peningkatan literasi keuangan.
+  </p>
+</div>
+
+<!-- PENUTUP BERANDA -->
+<div class="home-cta">
+  <span class="home-eyebrow">EXPLORE THE DOit ECOSYSTEM</span>
+  <h2>Mulai Kenali Ekosistem DOit</h2>
+  <p>
+    Temukan komunitas, platform, dan peluang untuk belajar
+    serta bertumbuh bersama.
+  </p>
+  <div class="home-cta-actions">
+    <a href="https://aturdoit.com/community"
+       target="_blank" rel="noopener noreferrer">
+      Kunjungi CCI
+    </a>
+    <a href="https://aturdoit.com"
+       target="_blank" rel="noopener noreferrer">
+      Kunjungi aturDOit
+    </a>
+  </div>
+</div>
+</section>
+
+<section id="ebsi" class="page">
+  <div class="container">
+    <div class="page-head">
+      <span class="tag">LEARN / CASHFLOW QUADRANT</span>
+      <h1>Cashflow Quadrant</h1>
+      <p>
+        Pahami empat cara seseorang memperoleh penghasilan,
+        mengenali karakteristik setiap kuadran, dan menentukan
+        langkah finansial sesuai tujuanmu.
+      </p>
+    </div>
+
+    <div class="panel section">
+      <h2>Apa Itu Cashflow Quadrant?</h2>
+      <p>
+        Cashflow Quadrant adalah konsep yang diperkenalkan oleh
+        Robert T. Kiyosaki dalam bukunya Rich Dad's Cashflow Quadrant.
+        Konsep ini membagi sumber penghasilan menjadi empat kuadran:
+        Employee (E), Self-Employed (S), Business Owner (B), dan
+        Investor (I).
+      </p>
+      <p>
+        Setiap kuadran memiliki cara kerja, sumber penghasilan,
+        tanggung jawab, serta risiko yang berbeda. Seseorang juga
+        dapat memperoleh penghasilan dari lebih dari satu kuadran.
+      </p>
+    </div>
+
+    <div class="cashflow-illustration">
+      <p class="image-caption">Konsep Cashflow Quadrant</p>
+      <img
+        src="images/cashflow-quadrant.png"
+        alt="Konsep Cashflow Quadrant: Employee, Business Owner, Self-Employed, dan Investor"
+      >
+    </div>
+
+    <div class="section">
+      <h2>Kenali Empat Kuadran</h2>
+      <p>Pilih kartu untuk mempelajari setiap kuadran lebih lanjut.</p>
+
+      <div class="grid-four">
+        <button class="card" onclick="detailEBSI('E')">
+          <div class="icon">💼</div>
+          <h3>E — Employee</h3>
+          <p>Mendapatkan penghasilan dengan bekerja untuk orang lain.</p>
+          <span class="tag">Lihat Detail →</span>
+        </button>
+
+        <button class="card" onclick="detailEBSI('S')">
+          <div class="icon">🧑‍💻</div>
+          <h3>S — Self-Employed</h3>
+          <p>Bekerja mandiri dengan mengandalkan keahlian sendiri.</p>
+          <span class="tag">Lihat Detail →</span>
+        </button>
+
+        <button class="card" onclick="detailEBSI('B')">
+          <div class="icon">🏢</div>
+          <h3>B — Business Owner</h3>
+          <p>Membangun bisnis yang didukung sistem dan tim.</p>
+          <span class="tag">Lihat Detail →</span>
+        </button>
+
+        <button class="card" onclick="detailEBSI('I')">
+          <div class="icon">📈</div>
+          <h3>I — Investor</h3>
+          <p>Menggunakan modal untuk memiliki aset investasi.</p>
+          <span class="tag">Lihat Detail →</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="ebsiDetail" class="panel section hidden">
+      <h2 id="ebsiTitle"></h2>
+      <div id="ebsiText"></div>
+      <button class="btn primary" onclick="closeEBSI()">
+        Tutup Detail
+      </button>
+    </div>
+
+    <div class="panel section">
+      <h2>Perbandingan Empat Kuadran</h2>
+      <p>Berikut gambaran umum perbedaan sumber penghasilannya.</p>
+
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;text-align:left">
+          <thead>
+            <tr>
+              <th style="padding:12px;border-bottom:1px solid #ddd">Kuadran</th>
+              <th style="padding:12px;border-bottom:1px solid #ddd">Sumber Penghasilan</th>
+              <th style="padding:12px;border-bottom:1px solid #ddd">Fokus Utama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:12px;border-bottom:1px solid #ddd">E — Employee</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd">Gaji atau upah</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd">Pekerjaan dan karier</td>
+            </tr>
+            <tr>
+              <td style="padding:12px;border-bottom:1px solid #ddd">S — Self-Employed</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd">Jasa atau pekerjaan sendiri</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd">Keahlian dan pekerjaan mandiri</td>
+            </tr>
+            <tr>
+              <td style="padding:12px;border-bottom:1px solid #ddd">B — Business Owner</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd">Keuntungan bisnis</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd">Sistem dan tim</td>
+            </tr>
+            <tr>
+              <td style="padding:12px">I — Investor</td>
+              <td style="padding:12px">Hasil investasi</td>
+              <td style="padding:12px">Aset dan pengelolaan modal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel section">
+      <h2>Bagaimana Memulai?</h2>
+      <ol>
+        <li>Kenali sumber penghasilanmu saat ini.</li>
+        <li>Tentukan tujuan karier dan keuanganmu.</li>
+        <li>Pelajari keterampilan, bisnis, atau instrumen investasi yang relevan.</li>
+        <li>Mulai dari langkah yang realistis sesuai kemampuan dan toleransi risiko.</li>
+      </ol>
+      <p>
+        Ingat, tidak ada satu kuadran yang otomatis paling baik untuk
+        semua orang. Setiap pilihan memiliki peluang, tanggung jawab,
+        dan risiko masing-masing.
+      </p>
+    </div>
+
+    <!-- MINI QUIZ INTERAKTIF KUADRAN -->
+    <div class="quiz-box" id="ebsiQuizBox">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+        <div>
+          <span class="tag">INTERACTIVE TEST</span>
+          <h2 style="margin:8px 0 4px; color:var(--navy);">🎯 Di Mana Posisi Kuadran Finansialmu?</h2>
+          <p style="margin:0; color:var(--muted); font-size:14px;">Jawab 3 pertanyaan singkat untuk melihat posisi kuadran dan rekomendasi langkahmu saat ini.</p>
+        </div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="quiz-step active" id="quizStep1">
+        <p style="font-weight:bold; margin-top:18px;">1. Bagaimana cara utamamu memperoleh pemasukan saat ini?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(1, 'E')">💼 Menerima gaji / upah bulanan dari perusahaan atau instansi.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(1, 'S')">🎨 Dari proyek freelance, jasa keahlian, atau jualan sendiri.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(1, 'B')">🏢 Memiliki bisnis dengan tim dan sistem yang sudah berjalan.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(1, 'I')">📈 Dari dividen, bunga aset, atau hasil investasi modal.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(1, 'E_MHS')">🎓 Masih mahasiswa / pelajar (belum memiliki penghasilan tetap).</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" id="quizStep2">
+        <p style="font-weight:bold; margin-top:18px;">2. Apa target atau prioritas terbesarmu dalam 1–2 tahun ke depan?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(2, 'skill')">🌱 Membangun pengalaman kerja nyata, skill baru, dan portofolio.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(2, 'income')">🚀 Membangun sumber penghasilan sampingan atau bisnis mandiri.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(2, 'system')">⚙️ Mengembangkan sistem bisnis dan kepemimpinan tim.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(2, 'invest')">💎 Mengembangkan aset dan passive income.</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" id="quizStep3">
+        <p style="font-weight:bold; margin-top:18px;">3. Berapa banyak waktu yang siap kamu dedikasikan untuk belajar sistem finansial?</p>
+        <div class="quiz-options">
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(3, 'part')">⏱️ 5–10 jam per minggu (fokus paruh waktu / magang fleksibel).</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(3, 'full')">🔥 Siap berkomitmen penuh untuk membangun karier bisnis / agensi.</button>
+          <button type="button" class="quiz-opt-btn" onclick="answerQuiz(3, 'learn')">📚 Ingin belajar konsep dasar dulu melalui komunitas.</button>
+        </div>
+      </div>
+
+      <!-- Result Card -->
+      <div class="quiz-step" id="quizResultStep">
+        <div class="quiz-result-card" id="quizResultCard">
+          <!-- Diisi otomatis oleh JavaScript -->
+        </div>
+        <div style="margin-top:16px; text-align:center;">
+          <button type="button" class="btn secondary" onclick="resetQuiz()">Ulangi Tes ↺</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="layar" class="page"><div class="container">
+  <div class="page-head"><span class="tag">LAYAR BIRU VISION</span><h1>Layar Biru Vision</h1><p>Halaman untuk menyusun materi Layar Biru yang sudah kamu terima.</p></div>
+  
+<!-- PENGENALAN LAYAR BIRU VISION -->
+<div class="panel vision-intro">
+  <span class="vision-label">MENGENAL VISION</span>
+  <h2>Apa Itu Layar Biru Vision?</h2>
+
+  <p>
+    Layar Biru Vision merupakan materi sistem bisnis yang
+    menggambarkan tahapan perkembangan bisnis dan proyeksi
+    income dalam perjalanan keagenan Vision.
+  </p>
+
+  <p>
+    Melalui materi ini, pengunjung dapat mengenal gambaran
+    perkembangan dari tahun ke tahun, komponen yang digunakan
+    dalam sistem bisnis, serta proyeksi income yang tercantum
+    dalam materi.
+  </p>
+</div>
+
+<!-- GAMBAR LAYAR BIRU VISION -->
+<div class="panel vision-image-panel">
+  <h2>Materi Layar Biru Vision</h2>
+  <p>
+    Berikut materi yang menjadi acuan penjelasan sistem bisnis
+    dan proyeksi income Vision.
+  </p>
+
+  <img
+    src="images/layar-biru-vision.jpg"
+    alt="Materi Layar Biru Vision"
+    class="vision-main-image"
+  >
+</div> <!-- penutup vision-image-panel -->
+
+<!-- PENJELASAN KOMPONEN SISTEM BISNIS -->
+<div class="panel vision-components">
+  <span class="vision-label">MEMAHAMI SISTEM</span>
+  <h2>Memahami Komponen Layar Biru Vision</h2>
+  <p>
+    Bagian ini membantu pengunjung mengenali istilah yang muncul
+    dalam materi Layar Biru Vision. Pilih komponen untuk membaca
+    penjelasan singkatnya.
+  </p>
+
+  <div class="vision-component-grid">
+    <button class="vision-component-card active"
+      type="button" onclick="showVisionComponent('n')">
+      <span class="vision-component-icon">👥</span>
+      <strong>N</strong>
+      <small>Komponen N</small>
+    </button>
+
+    <button class="vision-component-card"
+      type="button" onclick="showVisionComponent('promosi')">
+      <span class="vision-component-icon">📈</span>
+      <strong>Promosi</strong>
+      <small>Tahapan promosi</small>
+    </button>
+
+    <button class="vision-component-card"
+      type="button" onclick="showVisionComponent('leader')">
+      <span class="vision-component-icon">🤝</span>
+      <strong>Calon Leader</strong>
+      <small>Komponen kepemimpinan</small>
+    </button>
+  </div>
+
+  <div class="vision-component-detail" id="visionComponentDetail">
+    <h3>Komponen N</h3>
+    <p>
+      Komponen N tercantum dalam materi Layar Biru Vision.
+      Arti dan cara perhitungannya perlu dikonfirmasi kepada
+      pihak Vision.
+    </p>
+  </div>
+</div>
+
+<!-- PROYEKSI INCOME INTERAKTIF -->
+<div class="panel vision-income">
+  <span class="vision-label">PROYEKSI TAHUNAN</span>
+  <h2>Proyeksi Income Tahun 1–7</h2>
+  <p>
+    Pilih tahun untuk melihat angka proyeksi yang tercantum
+    dalam materi Layar Biru Vision.
+  </p>
+
+  <div class="vision-year-tabs">
+    <button type="button" class="vision-year active"
+      onclick="showVisionYear(1)">Tahun 1</button>
+    <button type="button" class="vision-year"
+      onclick="showVisionYear(2)">Tahun 2</button>
+    <button type="button" class="vision-year"
+      onclick="showVisionYear(3)">Tahun 3</button>
+    <button type="button" class="vision-year"
+      onclick="showVisionYear(4)">Tahun 4</button>
+    <button type="button" class="vision-year"
+      onclick="showVisionYear(5)">Tahun 5</button>
+    <button type="button" class="vision-year"
+      onclick="showVisionYear(6)">Tahun 6</button>
+    <button type="button" class="vision-year"
+      onclick="showVisionYear(7)">Tahun 7</button>
+  </div>
+
+  <div class="vision-bars" id="visionBars"></div>
+
+  <div class="vision-income-result">
+    <span id="visionIncomeYear">PROYEKSI TAHUN 1</span>
+    <h3 id="visionIncomeValue">Rp15 juta/bulan</h3>
+    <p id="visionIncomeDescription">
+      Angka proyeksi tahun pertama berdasarkan materi yang dibagikan.
+    </p>
+  </div>
+
+  <div class="notice">
+    Proyeksi bukan jaminan penghasilan. Hasil aktual dapat berbeda.
+    Satuan, asumsi, dan dasar perhitungan perlu dikonfirmasi
+    kepada pihak Vision.
+  </div>
+</div>
+</div></section>
+
+<section id="bsp" class="page"><div class="container">
+  <div class="page-head"><span class="tag">RINGKASAN BSP</span><h1>Karier, bisnis, dan arti kesuksesan</h1><p>Ringkasan tema dari transkrip BSP Juliana Parmadi yang kamu bagikan.</p></div>
+  <div class="grid">
+    <div class="card"><h3>🌱 Definisi sukses</h3><p>Kesuksesan bukan hanya uang dan jabatan, tetapi juga makna, kesejahteraan, dan fleksibilitas.</p></div>
+    <div class="card"><h3>🏢 Jalur corporate</h3><p>Corporate dapat memberi pengalaman dan networking. Perkembangan karier juga dipengaruhi sistem, anggaran, dan siklus promosi.</p></div>
+    <div class="card"><h3>🛠️ Tantangan bisnis</h3><p>Bisnis memiliki tanggung jawab terkait modal, people, operations, risiko, dan cash flow.</p></div>
+  </div>
+
+  <!-- ===== BSP: PEMBICARA ===== -->
+<div class="panel bsp-block">
+  <span class="vision-label">PEMBICARA</span>
+  <h2>Juliana Parmadi</h2>
+  <p>
+    Dalam sesi BSP, Juliana membagikan perjalanan kariernya: pernah
+    bekerja di perbankan (HSBC Premier Banking), menjalankan beberapa
+    usaha, lalu bergabung di Vision pada 2018. Dari pengalaman itu ia
+    membahas bahwa setiap jalur karier punya trade-off.
+  </p>
+</div>
+
+<!-- ===== BSP: DULU VS SEKARANG ===== -->
+<div class="panel bsp-block">
+  <span class="vision-label">DEFINISI SUKSES</span>
+  <h2>Sukses Dulu vs Sekarang</h2>
+  <p>
+    Menurut pembicara, cara orang memaknai sukses sudah bergeser.
+    Bukan hanya soal uang dan jabatan, tetapi juga pilihan, makna,
+    dan kesehatan mental.
+  </p>
+  <div style="overflow-x:auto">
+    <table class="bsp-table">
+      <thead>
+        <tr><th>Aspek</th><th>Dulu</th><th>Sekarang</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fokus</td><td>Mendapatkan pekerjaan</td><td>Membangun hidup yang baik</td></tr>
+        <tr><td>Tempat kerja</td><td>Perusahaan besar</td><td>Punya pilihan karier dan banyak sumber income</td></tr>
+        <tr><td>Tujuan</td><td>Naik jabatan</td><td>Otonomi dan fleksibilitas</td></tr>
+        <tr><td>Loyalitas</td><td>Bertahan 20–30 tahun di satu perusahaan</td><td>Bisa mengubah karier berkali-kali</td></tr>
+        <tr><td>Ukuran sukses</td><td>Gaji dan jabatan</td><td>Income ditambah makna</td></tr>
+        <tr><td>Aset</td><td>Punya rumah, mobil, dan aset</td><td>Punya aset dan bisa menikmatinya</td></tr>
+        <tr><td>Pola hidup</td><td>Kerja keras dulu, dinikmati nanti</td><td>Tetap bertumbuh tanpa mengorbankan hidup</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== BSP: BANDINGKAN JALUR (INTERAKTIF) ===== -->
+<div class="panel bsp-block">
+  <span class="vision-label">BANDINGKAN JALUR</span>
+  <h2>Setiap Jalur Punya Trade-off</h2>
+  <p>Pilih jalur untuk melihat kelebihan dan harga yang perlu dibayar.</p>
+
+  <div class="bsp-tabs">
+    <button type="button" class="bsp-tab active" data-path="corporate"
+      onclick="showBspPath('corporate')">🏢 Corporate</button>
+    <button type="button" class="bsp-tab" data-path="bisnis"
+      onclick="showBspPath('bisnis')">🛠️ Bisnis Sendiri</button>
+  </div>
+
+  <div class="bsp-path" id="bspPath"></div>
+</div>
+
+<!-- ===== BSP: ANGKA DARI MATERI ===== -->
+<div class="panel bsp-block">
+  <span class="vision-label">ANGKA DARI MATERI</span>
+  <h2>Data yang Disebut dalam Sesi</h2>
+  <div class="bsp-stats">
+    <div class="bsp-stat"><strong>23.000</strong><p>Responden Gen Z dan milenial di 44 negara dalam survei Deloitte yang disebut pembicara.</p></div>
+    <div class="bsp-stat"><strong>5–10%</strong><p>Asumsi kenaikan gaji per tahun, merujuk Mercer.</p></div>
+    <div class="bsp-stat"><strong>117 email</strong><p>Plus 153 pesan per hari kerja, merujuk survei Microsoft 2025.</p></div>
+    <div class="bsp-stat"><strong>40%</strong><p>Pengguna yang sudah memeriksa email kerja pukul 6 pagi.</p></div>
+    <div class="bsp-stat"><strong>Rp6 juta → ±Rp27 juta</strong><p>Hitungan pembicara untuk gaji awal 2010 jika naik 10% per tahun.</p></div>
+    <div class="bsp-stat"><strong>88%</strong><p>Bisnis keluarga yang gagal suksesi bila penerus tidak paham cash flow, menurut pembicara.</p></div>
+  </div>
+  <div class="notice">
+    Angka di atas disebutkan pembicara dalam sesi dan dirangkum dari
+    transkrip. Sumber aslinya perlu diverifikasi sebelum dijadikan acuan.
+  </div>
+</div>
+
+<!-- ===== BSP: CERITA PENGALAMAN ===== -->
+<div class="panel bsp-block">
+  <span class="vision-label">CERITA PENGALAMAN</span>
+  <h2>Pelajaran dari Perjalanan Bisnis</h2>
+
+  <details class="accordion">
+    <summary>Karier di perbankan (2010)</summary>
+    <ul>
+      <li>Memulai di HSBC Premier Banking dengan gaji awal Rp6 juta.</li>
+      <li>Dengan asumsi naik 10% per tahun, hitungan pembicara menembus sekitar Rp27 juta per bulan sekarang.</li>
+      <li>Harganya: jam kerja yang kurang fleksibel, dan posisi tidak bisa diwariskan.</li>
+    </ul>
+  </details>
+
+  <details class="accordion">
+    <summary>JustTip dan usaha kue (berhenti saat hamil)</summary>
+    <ul>
+      <li>JustTip menuntut perjalanan ke luar negeri dua kali sebulan dan membawa barang sendiri, sehingga harus berhenti saat hamil.</li>
+      <li>Usaha kue tier besar memakan waktu berhari-hari dan sulit didelegasikan karena orang membeli selera si pembuat.</li>
+      <li>Pelajaran: bisnis jasa sangat bergantung pada orangnya.</li>
+    </ul>
+  </details>
+
+  <details class="accordion">
+    <summary>Franchise preschool: sewa naik 4 kali lipat</summary>
+    <ul>
+      <li>Balik modal (BEP) di tahun kelima.</li>
+      <li>Saat kontrak akan diperpanjang, pemilik lahan ingin menjual dan menaikkan harga sekitar 4 kali lipat.</li>
+      <li>Pembicara memutuskan menjual sahamnya, lalu pandemi membuat murid berkurang sekitar setengahnya.</li>
+      <li>Pelajaran: bisnis yang bagus pun punya risiko di luar kendali.</li>
+    </ul>
+  </details>
+
+  <details class="accordion">
+    <summary>Pelajaran dari bisnis keluarga 100 tahun</summary>
+    <ul>
+      <li>Pembicara mencontohkan bisnis yang berdiri hampir seabad namun tetap rentan terhadap cash flow, utang, distribusi, dan perubahan pasar.</li>
+      <li>Kesimpulan: memiliki bisnis tidak sama dengan memiliki kebebasan. Kalau bisnis tidak bisa jalan tanpa kita, itu belum freedom.</li>
+    </ul>
+  </details>
+</div>
+  <div class="panel section"><h2>Pesan utama</h2><p>Setiap jalur memiliki trade-off. Pelajari peluang, tanggung jawab, dan risikonya sebelum mengambil keputusan.</p></div>
+</div></section>
+
+<section id="jalur" class="page"><div class="container">
+  <div class="page-head"><span class="tag">PILIH JALUR</span><h1>Informasi yang sesuai untukmu</h1><p>Pilih status untuk membuka jalur informasi yang relevan. Kamu tetap bisa mengakses materi edukasi yang tersedia.</p></div>
+  <div class="grid">
+    <div class="card"><div class="icon">🎓</div><h2>Mahasiswa</h2><p>Pelajari informasi program intern, persyaratan, jadwal, dan proses pendaftaran berdasarkan arahan resmi Vision.</p><button class="btn primary" onclick="showPage('intern')">Lihat Jalur Intern</button></div>
+    <div class="card"><div class="icon">💼</div><h2>Bukan Mahasiswa</h2><p>Pelajari peluang bisnis agen asuransi melalui Vision dan Allianz sebelum memutuskan apakah ingin mengetahui lebih lanjut.</p><button class="btn primary" onclick="showPage('bisnis')">Business Opportunity</button></div>
+  </div>
+</div></section>
+
+
+<section id="intern" class="page">
+  <div class="container">
+
+    <!-- 1. INFORMASI PROGRAM MAGANG VISION -->
+    <div class="page-head">
+      <span class="tag">JALUR INTERN</span>
+      <h1>Program Magang Vision</h1>
+      <p>
+        Kenali pilihan posisi magang, benefit, persyaratan,
+        dan proses pendaftaran sebelum mengajukan minat.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>Informasi Program</h2>
+      <p>
+        Program Magang Vision memberikan kesempatan bagi peserta
+        untuk mengembangkan kemampuan dan memperoleh pengalaman
+        melalui bidang yang sesuai dengan minat serta latar belakangnya.
+      </p>
+      <p>
+        Tersedia pilihan Business Executive, Web Developer,
+        dan UI/UX Designer dengan kriteria yang berbeda.
+      </p>
+    </div>
+
+    <!-- 2. PILIHAN POSISI MAGANG -->
+    <div class="panel" id="internPositions">
+      <h2>Pilihan Posisi Magang</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Business Executive</h3>
+          <p>
+            Terbuka untuk semua jurusan, tanpa pengalaman sebelumnya.
+          </p>
+          <button class="btn primary" type="button"
+            onclick="selectInternPosition('Business Executive')">
+            Pilih Posisi
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Web Developer</h3>
+          <p>
+            Untuk peserta berlatar belakang IT dan memiliki
+            pengalaman yang relevan.
+          </p>
+          <button class="btn primary" type="button"
+            onclick="selectInternPosition('Web Developer')">
+            Pilih Posisi
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>UI/UX Designer</h3>
+          <p>
+            Untuk peserta berlatar belakang IT dan memiliki
+            pengalaman yang relevan.
+          </p>
+          <button class="btn primary" type="button"
+            onclick="selectInternPosition('UI/UX Designer')">
+            Pilih Posisi
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. BENEFIT MAGANG -->
+    <div class="panel">
+      <h2>Benefit Magang</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Sertifikat</h3>
+          <p>Mendapatkan sertifikat sesuai ketentuan program.</p>
+        </div>
+        <div class="card">
+          <h3>Uang Transportasi</h3>
+          <p>Rp50.000 untuk setiap zona waktu yang diikuti.</p>
+        </div>
+        <div class="card">
+          <h3>Pengalaman</h3>
+          <p>Mengenal pengalaman kerja sesuai bidang yang dipilih.</p>
+        </div>
+        <div class="card">
+          <h3>Pengembangan Skill</h3>
+          <p>Mengembangkan keterampilan sesuai posisi.</p>
+        </div>
+        <div class="card">
+          <h3>Networking</h3>
+          <p>Memperluas relasi dan kesempatan berkolaborasi.</p>
+        </div>
+        <div class="card">
+          <h3>Portofolio</h3>
+          <p>Mengembangkan hasil karya yang relevan.</p>
+        </div>
+      </div>
+
+      <div class="transport-box">
+        <h3>Simulasi Uang Transportasi</h3>
+        <p>Pilih zona waktu yang kamu ikuti.</p>
+
+        <div class="transport-zones">
+          <label class="transport-zone">
+            <input type="checkbox" class="transport-check" value="50000">
+            Pagi — Rp50.000
+          </label>
+          <label class="transport-zone">
+            <input type="checkbox" class="transport-check" value="50000">
+            Siang — Rp50.000
+          </label>
+          <label class="transport-zone">
+            <input type="checkbox" class="transport-check" value="50000">
+            Malam — Rp50.000
+          </label>
+        </div>
+
+        <p class="transport-total">
+          Total simulasi: <span id="transportTotal">Rp0</span>
+        </p>
+        <small>
+          Total dihitung berdasarkan zona yang dipilih.
+          Konfirmasi ketentuan pembayaran kepada penyelenggara.
+        </small>
+      </div>
+    </div>
+
+    <!-- 4. MATERI YANG DIPELAJARI -->
+    <div class="panel">
+      <h2>Materi yang Dipelajari</h2>   
+      <details class="accordion">
+        <summary>Business Executive</summary>
+        <ul>
+          <li>Dasar komunikasi dan presentasi bisnis.</li>
+          <li>Pengenalan peluang dan kebutuhan calon pelanggan.</li>
+          <li>Pengembangan relasi profesional.</li>
+        </ul>
+      </details>
+      <details class="accordion">
+        <summary>Web Developer</summary>
+        <ul>
+          <li>Pengembangan website sesuai proyek.</li>
+          <li>Penggunaan teknologi web yang relevan.</li>
+          <li>Kolaborasi dalam pengerjaan proyek.</li>
+        </ul>
+      </details>
+      <details class="accordion">
+        <summary>UI/UX Designer</summary>
+        <ul>
+          <li>Riset dan pemahaman kebutuhan pengguna.</li>
+          <li>User flow, wireframe, dan desain antarmuka.</li>
+          <li>Prototyping dan evaluasi desain.</li>
+        </ul>
+      </details>
+
+      <p class="notice">
+        Materi ini merupakan gambaran awal, bukan kurikulum
+        resmi Vision yang sudah dikonfirmasi.
+      </p>
+    </div>
+
+    <!-- 5. PERSYARATAN -->
+    <div class="panel">
+      <h2>Persyaratan Magang</h2>
+      <ul>
+        <li>
+          <strong>Business Executive:</strong>
+          Terbuka untuk mahasiswa dari semua jurusan.
+          Tidak memerlukan pengalaman sebelumnya, sehingga cocok
+          bagi peserta yang ingin belajar dan mendapatkan pengalaman
+          melalui program magang.
+        </li>
+        <li>
+          <strong>Web Developer:</strong>
+          Berlatar belakang IT dan memiliki pengalaman relevan.
+        </li>
+        <li>
+          <strong>UI/UX Designer:</strong>
+          Berlatar belakang IT dan memiliki pengalaman relevan.
+        </li>
+      </ul>
+      <p>
+        Persyaratan tambahan, durasi, jadwal, dan mekanisme seleksi
+        perlu mengikuti informasi resmi dari Vision.
+      </p>
+    </div>
+
+    <!-- 6. ALUR PENDAFTARAN -->
+    <div class="panel">
+      <h2>Alur Pendaftaran</h2>
+      <ol>
+        <li>Pahami informasi program dan pilihan posisi.</li>
+        <li>Pilih posisi sesuai kriteria.</li>
+        <li>Isi formulir minat dengan data yang benar.</li>
+        <li>Ikuti arahan penyelenggara mengenai tahap berikutnya.</li>
+      </ol>
+      <p class="notice">
+        Tahapan di atas merupakan gambaran awal dan perlu
+        disesuaikan dengan prosedur resmi Vision.
+      </p>
+    </div>
+
+    <!-- 7. FORMULIR MINAT -->
+    <div class="panel">
+      <h2>Formulir Minat Magang</h2>
+        <div class="intern-steps" id="internSteps">
+        <div class="intern-step" data-step="1"><span>1</span><p>Pahami program</p></div>
+        <div class="intern-step" data-step="2"><span>2</span><p>Pilih posisi</p></div>
+        <div class="intern-step" data-step="3"><span>3</span><p>Isi formulir</p></div>
+        <div class="intern-step" data-step="4"><span>4</span><p>Seleksi berkas</p></div>
+        <div class="intern-step" data-step="5"><span>5</span><p>Interview</p></div>
+        <div class="intern-step" data-step="6"><span>6</span><p>Pengumuman hasil</p></div>
+        <div class="intern-step" data-step="7"><span>7</span><p>Mulai magang</p></div>
+      </div>
+
+      <div class="status-box">
+        <h3>Cek Status Pendaftaran</h3>
+        <p>Sudah mendaftar? Masukkan email yang kamu pakai di formulir.</p>
+        <div class="status-row">
+          <input id="statusEmail" type="email" placeholder="nama@email.com">
+          <button type="button" class="btn primary" id="statusBtn" onclick="cekStatus()">Cek Status</button>
+        </div>
+        <p id="statusMsg"></p>
+      </div>
+      <form id="internForm">
+        <div class="form-field">
+          <label>Nama lengkap</label>
+          <input name="nama" required placeholder="Nama kamu">
+        </div>
+
+        <div class="form-field">
+          <label>Email</label>
+          <input name="email" type="email" required
+            placeholder="nama@email.com">
+        </div>
+
+        <div class="form-field">
+          <label>Posisi yang diminati</label>
+          <select name="bidang" required>
+            <option value="">Pilih posisi</option>
+            <option value="Business Executive">Business Executive</option>
+            <option value="Web Developer">Web Developer</option>
+            <option value="UI/UX Designer">UI/UX Designer</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Latar belakang pendidikan</label>
+          <input name="pendidikan"
+            placeholder="Contoh: Sistem Teknologi Informasi">
+        </div>
+  
+        <div class="form-field">
+          <label for="internPortfolio">Pengalaman atau portofolio</label>
+          <textarea
+            id="internPortfolio"
+            name="portofolio"
+            rows="4"
+            placeholder="Ceritakan pengalaman atau tempel tautan portofolio"
+          ></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="internCv">Unggah CV</label>
+          <input id="internCv" name="cv" type="file" accept=".pdf,.docx,image/jpeg,image/png" required>
+          <small class="file-hint">Format PDF, DOCX, JPG, atau PNG. Maksimal 2 MB.</small>
+        </div>
+
+        <div class="form-field">
+          <label for="internPortoFile">Unggah portofolio</label>
+          <input id="internPortoFile" name="portofolio_file" type="file" accept=".pdf,.docx,image/jpeg,image/png">
+          <small class="file-hint">Wajib untuk Web Developer dan UI/UX Designer (boleh file atau tautan di kotak di atas). Maksimal 2 MB.</small>
+        </div>
+
+        <div class="form-field">
+          <label style="font-weight:normal">
+            <input type="checkbox" name="persetujuan" value="setuju" required style="width:auto">
+            Saya setuju data ini digunakan penyelenggara untuk keperluan seleksi magang.
+          </label>
+        </div>
+
+        <button class="btn primary" type="submit">
+          Kirim Minat
+        </button>
+        <p id="internMsg"></p>
+      </form>
+
+      <small>
+        Data yang kamu kirim akan diterima penyelenggara. Pantau statusnya lewat Cek Status.
+      </small>
+    </div>
+
+  </div>
+</section>
+
+<section id="bisnis" class="page"><div class="container">
+  <div class="page-head"><span class="tag">BUSINESS OPPORTUNITY</span><h1>Peluang Bisnis Agen</h1><p>Pelajari informasi peluang menjadi agen asuransi melalui Vision dan Allianz.</p></div>
+  
+<!-- 1. MENGENAL JALUR BISNIS VISION -->
+<div class="panel">
+  <h2>Mengenal Bisnis Vision</h2>
+  <p>
+    Pelajari peluang menjadi agen asuransi Allianz melalui Vision.
+    Perjalanan agen dimulai dari Business Executive (BE), kemudian
+    dapat berkembang ke Business Partner (BP) sesuai persyaratan
+    dan ketentuan yang berlaku.
+  </p>
+</div>
+
+<!-- 2. TAHAPAN AGEN -->
+<div class="panel">
+  <h2>Tahapan Karier Agen</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>01. Business Executive (BE)</h3>
+      <p>
+        Tahap awal untuk mempelajari produk asuransi,
+        mengikuti kelas atau pelatihan, mengembangkan
+        kemampuan komunikasi, dan mencari calon nasabah.
+      </p>
+      <p><strong>Fokus:</strong> penjualan dan pengembangan nasabah.</p>
+    </div>
+
+    <div class="card">
+      <h3>02. Business Partner (BP)</h3>
+      <p>
+        Jenjang berikutnya yang berfokus pada pengembangan
+        bisnis dan perekrutan anggota tim, sesuai ketentuan
+        kenaikan jenjang yang berlaku.
+      </p>
+      <p><strong>Fokus:</strong> pengembangan tim dan bisnis.</p>
+    </div>
+  </div>
+
+  <div class="notice">
+    Kenaikan dari BE ke BP tidak otomatis. Agen perlu memenuhi
+    persyaratan dan ketentuan resmi dari Vision.
+  </div>
+</div>
+
+<!-- 3. CARA KERJA DAN INCOME -->
+<div class="panel">
+  <h2>Cara Kerja dan Sistem Income</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Ikuti Kelas</h3>
+      <p>
+        Mempelajari produk, pengetahuan asuransi, dan
+        keterampilan yang dibutuhkan dalam kegiatan keagenan.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Cari Nasabah</h3>
+      <p>
+        Membangun relasi dan membantu calon nasabah
+        memahami pilihan perlindungan sesuai kebutuhan.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Kembangkan Income</h3>
+      <p>
+        Penghasilan berasal dari skema komisi atau kompensasi
+        keagenan sesuai hasil dan ketentuan yang berlaku,
+        bukan gaji bulanan tetap.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 4. ILUSTRASI PERKEMBANGAN BISNIS -->
+<div class="panel">
+  <h2>Layar Biru Vision</h2>
+
+  <p>
+    Berikut materi Layar Biru Vision yang menjelaskan
+    gambaran sistem bisnis, tahapan perkembangan, dan
+    proyeksi income agen.
+  </p>
+
+  <div style="margin: 24px 0; text-align: center;">
+    <img
+      id="layarBiruImg"
+      src="images/layar-biru-vision.jpg"
+      alt="Layar Biru Vision"
+      style="display:block; width:100%; max-width:900px; height:auto;
+      margin:0 auto; border-radius:12px; border:1px solid #e5e7eb; cursor:pointer;"
+      onclick="openLightbox(this.src)"
+      title="Klik untuk memperbesar gambar"
+    >
+    <button type="button" class="btn-zoom-img" onclick="openLightbox('images/layar-biru-vision.jpg')">
+      🔍 Klik untuk Perbesar Gambar Layar Biru
+    </button>
+  </div>
+
+  <h3>Penjelasan Layar Biru Vision</h3>
+  <p>
+    Materi ini menggambarkan proyeksi income dari tahun pertama
+    hingga tahun ketujuh dengan komponen N dan promosi yang
+    tercantum pada setiap tahapan.
+  </p>
+
+  <h3>Jenjang Agen</h3>
+  <p>
+    Perjalanan agen dimulai dari Business Executive (BE).
+    Agen yang memenuhi persyaratan dapat melanjutkan ke jenjang
+    Business Partner (BP), yang berfokus pada pengembangan tim
+    dan bisnis sesuai ketentuan Vision.
+  </p>
+
+  <div class="notice">
+    Angka pada gambar merupakan proyeksi dalam materi Vision,
+    bukan jaminan penghasilan. Dasar perhitungan, asumsi,
+    dan persyaratan promosi perlu dikonfirmasi kepada penyelenggara.
+  </div>
+</div>
+
+<!-- 5. PERSYARATAN -->
+<div class="panel">
+  <h2>Persyaratan dan Kenaikan Jenjang</h2>
+  <ul>
+    <li>Mengikuti proses pendaftaran keagenan.</li>
+    <li>Mengikuti kelas atau pelatihan sesuai ketentuan.</li>
+    <li>Memenuhi persyaratan keagenan yang berlaku.</li>
+    <li>
+      Untuk naik dari BE ke BP, memenuhi kriteria pencapaian
+      dan persyaratan promosi yang ditetapkan Vision.
+    </li>
+  </ul>
+
+  <p>
+    Detail target ALP, ketentuan promosi, dan persyaratan
+    resmi perlu dikonfirmasi kepada pihak Vision.
+  </p>
+</div>
+
+<!-- 6. FORMULIR MINAT -->
+<div class="panel">
+  <h2>Tertarik Menjadi Agen?</h2>
+  <p>
+    Isi formulir minat untuk mempelajari informasi lebih lanjut
+    mengenai peluang bisnis agen melalui Vision.
+  </p>
+
+  <form id="agentInterestForm">
+    <div class="form-field">
+      <label for="agentName">Nama lengkap</label>
+      <input id="agentName" name="nama" required
+        placeholder="Masukkan nama lengkap">
+    </div>
+
+    <div class="form-field">
+      <label for="agentEmail">Email</label>
+      <input id="agentEmail" name="email" type="email"
+        required placeholder="nama@email.com">
+    </div>
+
+    <div class="form-field">
+      <label for="agentPhone">Nomor WhatsApp</label>
+      <input id="agentPhone" name="whatsapp" type="tel"
+        required placeholder="Nomor WhatsApp aktif">
+    </div>
+
+    <div class="form-field">
+      <label for="agentGoal">Informasi yang ingin diketahui</label>
+      <select id="agentGoal" name="minat" required>
+        <option value="">Pilih informasi</option>
+        <option value="BE">Menjadi Business Executive</option>
+        <option value="BP">Jenjang Business Partner</option>
+        <option value="Income">Sistem income keagenan</option>
+        <option value="Other">Informasi umum</option>
+      </select>
+    </div>
+
+    <button class="btn primary" type="submit">
+      Kirim Minat (Demo)
+    </button>
+    <p id="agentInterestMsg"></p>
+  </form>
+
+  <small>
+    Formulir ini masih berupa demo. Data belum dikirim
+    ke Vision atau Allianz.
+  </small>
+</div>
+</div></section>
+
+<section id="agen" class="page"><div class="container">
+  <div class="page-head"><span class="tag">CONNECT</span><h1>Cari Agen</h1><p>Profil di bawah hanya contoh prototype. Ganti dengan data agen yang benar dan sudah mendapat izin.</p></div>
+  <div class="search"><input id="agentSearch" placeholder="Cari nama atau area agen"><button class="btn primary" onclick="filterAgents()">Cari</button></div>
+  <div class="agent-chips" id="agentChips">
+  <button type="button" class="agent-chip active" onclick="setAgentArea('', this)">Semua</button>
+  <button type="button" class="agent-chip" onclick="setAgentArea('jakarta', this)">Jakarta</button>
+  <button type="button" class="agent-chip" onclick="setAgentArea('bekasi', this)">Bekasi</button>
+  <button type="button" class="agent-chip" onclick="setAgentArea('online', this)">Online</button>
+</div>
+  <div class="grid" id="agents">
+    <div class="card agent" data-key="demo jakarta"><h3>👤 Profil Agen Demo 01</h3><p>Area: Jakarta<br>Data contoh, bukan kontak nyata.</p><button class="btn secondary" onclick="openChat('Agen Demo 01')">Chat</button></div>
+    <div class="card agent" data-key="demo bekasi"><h3>👤 Profil Agen Demo 02</h3><p>Area: Bekasi<br>Data contoh, bukan kontak nyata.</p><button class="btn secondary" onclick="openChat('Agen Demo 02')">Chat</button></div>
+    <div class="card agent" data-key="demo online"><h3>👤 Profil Agen Demo 03</h3><p>Area: Online<br>Data contoh, bukan kontak nyata.</p><button class="btn secondary" onclick="openChat('Agen Demo 03')">Chat</button></div>
+  </div>
+  <p id="empty" class="hidden">Profil tidak ditemukan.</p>
+</div></section>
+
+<section id="chat" class="page"><div class="container">
+  <div class="page-head"><span class="tag">CONNECT</span><h1>Chat Agen</h1><p>Tanyakan seputar Layar Biru Vision, program magang, dan peluang menjadi agen.</p></div>
+  <div class="chat-box"><div class="chat-title">💬 Chat cariDOit <span id="chatTarget">· Demo</span></div><div class="messages" id="messages"><div class="message">Halo! Ada yang ingin kamu tanyakan tentang materi atau peluang Vision?</div></div><div class="quick-replies" id="quickReplies"></div><form class="chat-form" id="chatForm"><input id="chatInput" placeholder="Tulis pesan..." required><button class="btn primary">Kirim</button></form></div>
+  <small>Butuh jawaban lebih lengkap? Klik tombol di bawah untuk melanjutkan percakapan ke WhatsApp agen.</small>
+  <div style="margin-top:14px">
+  <button type="button" class="btn btn-wa" onclick="continueOnWhatsApp()">
+    Lanjutkan ke WhatsApp
+  </button>
+</div>
+</div></section>
+</main>
+
+<footer><div class="container"><h2>cari<span style="color:var(--orange)">DO</span>it</h2><p>Kenali materi Vision, pilihan karier, dan informasi peluang.</p><a href="#ebsi" onclick="showPage('ebsi')">Explore EBSI</a><a href="#bisnis" onclick="showPage('bisnis')">Vision Business System</a><a href="#layar" onclick="showPage('layar')">Layar Biru Vision</a><a href="#intern" onclick="showPage('intern')">Jalur Intern</a><a href="#bisnis" onclick="showPage('bisnis')">Business Opportunity</a><small>Prototype website · Login, form, chat, dan data agen belum terhubung ke sistem nyata.</small></div></footer>
+
+<!-- MODAL LOGIN POPUP -->
+<div class="modal-overlay" id="authModalOverlay">
+  <div class="auth-modal">
+    <button type="button" class="modal-close-btn" id="modalCloseBtn" onclick="closeAuthModal()" style="display:none;" aria-label="Tutup">✕</button>
+    
+    <div class="auth-header">
+      <span style="font-size:34px;">🔐</span>
+      <h2>Portal cariDOit</h2>
+      <p id="authSubtitle">Silakan masuk atau daftar akun terlebih dahulu untuk mengakses website.</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Masuk</button>
+      <button type="button" class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Daftar Akun</button>
+    </div>
+
+    <div class="auth-demo-badge">
+      💡 <strong>Mode Demo Aktif:</strong> Anda dapat langsung mengetik nama atau email apa saja untuk mencoba simulasi login.
+    </div>
+
+    <form id="authForm" onsubmit="handleAuthSubmit(event)">
+      <div class="form-field" id="authNameField" style="display:none;">
+        <label for="authNameInput">Nama Lengkap</label>
+        <input type="text" id="authNameInput" placeholder="Contoh: Nasywa Destian">
+      </div>
+
+      <div class="form-field">
+        <label for="authEmailInput">Email atau Nama Pengguna</label>
+        <input type="text" id="authEmailInput" required placeholder="nama@email.com atau username">
+      </div>
+
+      <div class="form-field">
+        <label for="authPassInput">Kata Sandi</label>
+        <input type="password" id="authPassInput" required placeholder="••••••••">
+      </div>
+
+      <button type="submit" class="btn primary" id="authSubmitBtn" style="width:100%; margin-top:14px;">
+        Masuk Sekarang
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- FLOATING CHAT WIDGET -->
+<div class="floating-chat-trigger" id="floatingChatTrigger" onclick="toggleFloatingChat()" title="Chat dengan Tim & Agen">
+  💬
+  <span class="chat-unread-dot" id="chatUnreadDot"></span>
+</div>
+
+<div class="floating-chat-window" id="floatingChatWindow">
+  <div class="floating-chat-header">
+    <div class="floating-chat-agent-info">
+      <div class="floating-agent-avatar">🤖</div>
+      <div class="floating-agent-text">
+        <h4 id="floatingAgentName">Asisten cariDOit</h4>
+        <small><span class="online-indicator"></span> Online · Siap Membantu</small>
+      </div>
+    </div>
+    <button type="button" class="floating-chat-close" onclick="toggleFloatingChat()" aria-label="Tutup Chat">✕</button>
+  </div>
+
+  <div class="floating-chat-body" id="floatingChatBody">
+    <div class="message">
+      Halo! Selamat datang di <strong>cariDOit</strong>. Ada yang bisa kami bantu seputar program magang, materi Cashflow Quadrant, atau info agen?
+      <span class="msg-time">Baru saja</span>
+    </div>
+  </div>
+
+  <div class="floating-chat-quick" id="floatingQuickReplies">
+    <button type="button" onclick="sendFloatingQuick('Info Program Magang')">🎓 Program Magang</button>
+    <button type="button" onclick="sendFloatingQuick('Apa itu Layar Biru Vision?')">📊 Layar Biru</button>
+    <button type="button" onclick="sendFloatingQuick('Bagaimana cara jadi agen?')">💼 Jadi Agen</button>
+    <button type="button" onclick="sendFloatingQuick('Penjelasan Cashflow Quadrant (EBSI)')">💰 EBSI Quadrant</button>
+  </div>
+
+  <div class="floating-wa-btn-wrap">
+    <button type="button" class="floating-wa-btn" onclick="openWhatsApp('Agen Demo 01', 'Halo, saya ingin bertanya via WhatsApp langsung.')">
+      📲 Lanjut Chat WhatsApp Agen
+    </button>
+  </div>
+
+  <form class="floating-chat-footer" id="floatingChatForm" onsubmit="handleFloatingSend(event)">
+    <input type="text" id="floatingChatInput" placeholder="Ketik pertanyaan..." autocomplete="off" required>
+    <button type="submit" aria-label="Kirim">➤</button>
+  </form>
+</div>
+
+<!-- USER DASHBOARD MODAL -->
+<div class="modal-overlay" id="dashboardModalOverlay" onclick="if(event.target===this) closeUserDashboard()">
+  <div class="auth-modal dashboard-modal">
+    <button type="button" class="modal-close-btn" onclick="closeUserDashboard()" aria-label="Tutup">✕</button>
+    
+    <div class="auth-header">
+      <div class="avatar-circle" id="dashAvatarChar" style="width:48px; height:48px; font-size:22px; margin:0 auto 10px;">U</div>
+      <h2 id="dashUserName" style="margin:0;">Nama Pengguna</h2>
+      <p id="dashUserEmail" style="color:var(--muted); font-size:13px; margin:4px 0 10px;">email@domain.com</p>
+      <span class="user-stat-pill stat-pill-active">● Anggota Terdaftar (Demo)</span>
+    </div>
+
+    <hr style="border:0; border-top:1px solid #e2e8f0; margin:16px 0;">
+
+    <h3 style="font-size:15px; margin:0 0 10px; color:var(--navy);">📋 Aktivitas & Riwayat Pendaftaran:</h3>
+    <div class="dashboard-activity-list" id="dashboardActivities">
+      <div class="dashboard-activity-item">
+        <span>🎓 Minat Magang Vision</span>
+        <strong id="dashInternStatus" style="color:#d97706;">Belum Mendaftar</strong>
+      </div>
+      <div class="dashboard-activity-item">
+        <span>💼 Minat Peluang Bisnis Agen</span>
+        <strong id="dashAgentStatus" style="color:#64748b;">Belum Ada</strong>
+      </div>
+      <div class="dashboard-activity-item">
+        <span>🎯 Hasil Asesmen Kuadran (EBSI)</span>
+        <strong id="dashQuizStatus" style="color:var(--blue);">Belum Mengikuti Tes</strong>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <button type="button" class="btn primary" style="flex:1;" onclick="closeUserDashboard(); showPage('intern');">
+        Lihat Info Magang
+      </button>
+      <button type="button" class="btn secondary" style="flex:1;" onclick="closeUserDashboard(); showPage('ebsi');">
+        Pelajari EBSI
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE LIGHTBOX OVERLAY -->
+<div class="lightbox-overlay" id="imageLightboxOverlay" onclick="closeLightbox()">
+  <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Tutup Preview">✕</button>
+  <img class="lightbox-img" id="lightboxActiveImg" src="" alt="Perbesar Gambar">
+</div>
+
+<button id="toTop" class="to-top" type="button" aria-label="Kembali ke atas">↑</button>
+
+<script>
+function showPage(id) {
+  const target = document.getElementById(id);
+
+  if (!target || !target.classList.contains('page')) return;
+
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.toggle('active', page.id === id);
+  });
+
+  document.querySelectorAll('.nav-dropdown').forEach(menu => {
+    menu.open = false;
+  });
+
+  history.pushState(null, '', '#' + id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const cashflowQuadrants = {
+  E: {
+    title: "💼 E — Employee (Karyawan)",
+    definition:
+      "Employee memperoleh penghasilan dengan bekerja untuk perusahaan atau orang lain, biasanya dalam bentuk gaji atau upah.",
+    characteristics: [
+      "Bekerja berdasarkan peran dan tanggung jawab tertentu.",
+      "Umumnya mengikuti aturan dan sistem perusahaan.",
+      "Penghasilan biasanya berasal dari gaji atau upah.",
+      "Kesempatan berkembang dapat berasal dari pengalaman, keterampilan, dan promosi."
+    ],
+    source:
+      "Gaji, upah, bonus, atau tunjangan sesuai ketentuan pekerjaan.",
+    example:
+      "Seorang UI/UX Designer bekerja di perusahaan teknologi, merancang antarmuka aplikasi, berkolaborasi dengan tim, dan menerima gaji bulanan.",
+    advantages:
+      "Penghasilan cenderung lebih teratur dan pembagian tugas lebih jelas.",
+    challenges:
+      "Penghasilan dan perkembangan karier dapat dipengaruhi kebijakan perusahaan, posisi, dan kondisi pekerjaan.",
+    firstStep:
+      "Kembangkan keterampilan, pengalaman, portofolio, dan perencanaan keuangan pribadi."
+  },
+
+  S: {
+    title: "🧑‍💻 S — Self-Employed (Pekerja Mandiri)",
+    definition:
+      "Self-Employed memperoleh penghasilan melalui pekerjaan atau jasa yang dikelola sendiri. Penghasilan sering bergantung pada keahlian, waktu, dan keterlibatan pribadi.",
+    characteristics: [
+      "Memiliki kendali lebih besar atas cara bekerja.",
+      "Mencari klien atau pelanggan sendiri.",
+      "Mengatur jadwal, biaya, dan kualitas pekerjaan.",
+      "Bertanggung jawab atas pendapatan dan pengeluaran pekerjaannya."
+    ],
+    source:
+      "Bayaran proyek, honor jasa, biaya konsultasi, atau pendapatan dari pelanggan.",
+    example:
+      "Seorang freelance designer menerima proyek desain aplikasi dari beberapa klien dan mendapatkan bayaran berdasarkan kesepakatan.",
+    advantages:
+      "Lebih fleksibel dalam memilih proyek, klien, dan cara bekerja.",
+    challenges:
+      "Pendapatan dapat berubah-ubah dan pekerjaan sering bergantung pada waktu serta kemampuan pribadi.",
+    firstStep:
+      "Bangun portofolio, tentukan layanan dan harga, serta pelajari cara mencari klien."
+  },
+
+  B: {
+    title: "🏢 B — Business Owner (Pemilik Bisnis)",
+    definition:
+      "Business Owner memiliki bisnis dan membangun sistem, proses, serta tim agar kegiatan usaha dapat berjalan tanpa harus bergantung sepenuhnya pada pemilik.",
+    characteristics: [
+      "Membangun dan mengembangkan sistem bisnis.",
+      "Mengelola tim, operasional, dan strategi.",
+      "Membuat proses kerja yang dapat dijalankan secara konsisten.",
+      "Bertanggung jawab atas keputusan dan risiko bisnis."
+    ],
+    source:
+      "Keuntungan usaha yang diperoleh setelah memperhitungkan biaya dan kewajiban bisnis.",
+    example:
+      "Pemilik perusahaan desain digital membangun tim designer, mengatur proses pelayanan klien, dan membuat sistem operasional untuk menjalankan bisnis.",
+    advantages:
+      "Bisnis memiliki peluang berkembang melalui sistem, tim, dan proses yang dapat diperluas.",
+    challenges:
+      "Membutuhkan pengelolaan tim, modal, operasional, dan risiko usaha. Keuntungan tidak dijamin.",
+    firstStep:
+      "Validasi kebutuhan pasar, buat model bisnis sederhana, hitung biaya, dan bangun proses yang dapat diulang."
+  },
+
+  I: {
+    title: "📈 I — Investor (Investor)",
+    definition:
+      "Investor menggunakan uang atau modal untuk membeli aset atau menanamkan dana dengan tujuan memperoleh hasil investasi di masa depan.",
+    characteristics: [
+      "Mempelajari aset dan instrumen sebelum berinvestasi.",
+      "Mempertimbangkan potensi hasil, risiko, dan jangka waktu.",
+      "Mengelola modal sesuai tujuan keuangan.",
+      "Memantau kinerja investasi dan meninjau keputusan sesuai kebutuhan."
+    ],
+    source:
+      "Potensi hasil dari aset, misalnya dividen, bunga, pendapatan sewa, atau kenaikan nilai aset, bergantung pada instrumennya.",
+    example:
+      "Seseorang mempelajari reksa dana atau saham, menentukan tujuan investasi, lalu mengalokasikan dana sesuai kemampuan dan toleransi risikonya.",
+    advantages:
+      "Memiliki peluang mengembangkan aset tanpa harus menukar seluruh waktu kerja secara langsung dengan pendapatan.",
+    challenges:
+      "Nilai investasi dapat turun dan modal dapat mengalami kerugian. Hasil tidak pasti.",
+    firstStep:
+      "Pelajari dasar investasi, pahami risiko dan biaya, siapkan dana sesuai kondisi keuangan, serta hindari janji keuntungan pasti."
+  }
+};
+
+function detailEBSI(code) {
+  const item = cashflowQuadrants[code];
+  if (!item) return;
+
+  document.getElementById("ebsiTitle").textContent = item.title;
+
+  document.getElementById("ebsiText").innerHTML = `
+    <h3>Pengertian</h3>
+    <p>${item.definition}</p>
+
+    <h3>Karakteristik</h3>
+    <ul>
+      ${item.characteristics.map(x => `<li>${x}</li>`).join("")}
+    </ul>
+
+    <h3>Sumber Penghasilan</h3>
+    <p>${item.source}</p>
+
+    <h3>Contoh dalam Kehidupan</h3>
+    <p>${item.example}</p>
+
+    <h3>Kelebihan</h3>
+    <p>${item.advantages}</p>
+
+    <h3>Tantangan</h3>
+    <p>${item.challenges}</p>
+
+    <h3>Langkah Awal</h3>
+    <p>${item.firstStep}</p>
+  `;
+
+  document.getElementById("ebsiDetail").classList.remove("hidden");
+  document.getElementById("ebsiDetail").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+function closeEBSI() {
+  document.getElementById("ebsiDetail").classList.add("hidden");
+}
+
+function filterAgents() {
+  const q = document.getElementById('agentSearch').value.toLowerCase();
+  let count = 0;
+  document.querySelectorAll('.agent').forEach(a => {
+    const show = (a.dataset.key + a.innerText).toLowerCase().includes(q);
+    a.classList.toggle('hidden', !show);
+    if (show) count++;
+  });
+  document.getElementById('empty').classList.toggle('hidden', count > 0);
+}
+document.getElementById('agentSearch').addEventListener('input', filterAgents);
+function openChat(name) {
+  document.getElementById('chatTarget').textContent = '· ' + name + ' (demo)';
+  document.getElementById('messages').innerHTML =
+    '<div class="message">Percakapan demo dengan ' + name +
+    '. Belum terhubung ke agen nyata.</div>';
+  showPage('chat');
+}
+
+document.querySelectorAll('section.page').forEach((section) => {
+  if (section.id === 'home') return;
+
+  const container = section.querySelector('.container');
+  if (!container || container.querySelector('.back-home')) return;
+
+  const button = document.createElement('button');
+  button.className = 'back-home';
+  button.textContent = '← Kembali ke Beranda';
+  button.onclick = () => showPage('home');
+
+  container.prepend(button);
+});
+
+function showHomeSection(id) {
+  showPage('home');
+
+  setTimeout(() => {
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, 150);
+}
+
+function selectInternPosition(position) {
+  const bidang = document.querySelector(
+    '#internForm [name="bidang"]'
+  );
+
+  if (bidang) {
+    bidang.value = position;
+    document.getElementById('internForm').scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  }
+}
+
+function updateTransportTotal() {
+  const checks = document.querySelectorAll(
+    '.transport-check:checked'
+  );
+
+  const total = Array.from(checks).reduce(
+    (sum, check) => sum + Number(check.value),
+    0
+  );
+
+  document.getElementById('transportTotal').textContent =
+    'Rp' + total.toLocaleString('id-ID');
+}
+
+document.querySelectorAll('.transport-check').forEach(check => {
+  check.addEventListener('change', updateTransportTotal);
+});
+
+function showVisionComponent(component) {
+  const components = {
+    n: {
+      title: 'Komponen N',
+      text: 'Komponen N tercantum dalam materi Layar Biru Vision. Arti dan cara perhitungannya perlu dikonfirmasi kepada pihak Vision.'
+    },
+    promosi: {
+      title: 'Promosi',
+      text: 'Materi menampilkan komponen promosi. Tahapan dan persyaratan promosi perlu mengikuti ketentuan resmi Vision.'
+    },
+    leader: {
+      title: 'Calon Leader',
+      text: 'Istilah Calon Leader tercantum dalam materi. Peran dan kriteria untuk menjadi leader perlu dikonfirmasi kepada pihak Vision.'
+    }
+  };
+
+  const selected = components[component];
+  const detail = document.getElementById('visionComponentDetail');
+
+  if (!selected || !detail) return;
+
+  detail.innerHTML = `
+    <h3>${selected.title}</h3>
+    <p>${selected.text}</p>
+  `;
+
+  document.querySelectorAll('.vision-component-card').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  const index = { n: 0, promosi: 1, leader: 2 }[component];
+  const buttons = document.querySelectorAll('.vision-component-card');
+
+  if (buttons[index]) {
+    buttons[index].classList.add('active');
+  }
+}
+
+function showVisionYear(year) {
+  const incomeData = {
+    1: 'Rp15 juta/bulan',
+    2: 'Rp35 juta/bulan',
+    3: 'Rp82 juta/bulan',
+    4: 'Rp291 juta/bulan',
+    5: 'Rp1,1 miliar/bulan',
+    6: 'Rp4,5 miliar/bulan',
+    7: 'Rp17,9 miliar/bulan'
+  };
+
+  const yearLabel = document.getElementById('visionIncomeYear');
+  const incomeValue = document.getElementById('visionIncomeValue');
+  const description = document.getElementById('visionIncomeDescription');
+
+  if (!incomeData[year] || !yearLabel || !incomeValue || !description) {
+    return;
+  }
+
+  renderVisionBars(year);
+
+  yearLabel.textContent = 'PROYEKSI TAHUN ' + year;
+  incomeValue.textContent = incomeData[year];
+  description.textContent =
+    'Angka proyeksi tahun ' + year +
+    ' berdasarkan materi yang dibagikan, bukan jaminan pendapatan.';
+
+  document.querySelectorAll('.vision-year').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  const buttons = document.querySelectorAll('.vision-year');
+
+  if (buttons[year - 1]) {
+    buttons[year - 1].classList.add('active');
+  }
+}
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('show');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(
+  '.home-section, .financial-system, .home-cta, .ecosystem-card, .feature-card, .system-card, .mission-item, .panel'
+).forEach(el => {
+  el.classList.add('reveal');
+  revealObserver.observe(el);
+});
+
+function activatePage(id) {
+  const target = document.getElementById(id);
+  if (!target || !target.classList.contains('page')) return;
+  document.querySelectorAll('.page').forEach(p =>
+    p.classList.toggle('active', p.id === id)
+  );
+  window.scrollTo({ top: 0 });
+}
+
+window.addEventListener('popstate', () => {
+  activatePage(location.hash.replace('#', '') || 'home');
+});
+
+window.addEventListener('load', () => {
+  const id = location.hash.replace('#', '');
+  if (id) activatePage(id);
+});
+
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  toTop.classList.toggle('visible', window.scrollY > 400);
+});
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+const visionIncomeNumbers = [15, 35, 82, 291, 1100, 4500, 17900]; // juta
+
+function renderVisionBars(active) {
+  const wrap = document.getElementById('visionBars');
+  if (!wrap) return;
+  const max = Math.log10(visionIncomeNumbers[visionIncomeNumbers.length - 1]);
+  wrap.innerHTML = visionIncomeNumbers.map((v, i) => {
+    const h = Math.max(12, Math.log10(v) / max * 100);
+    return `<button type="button" class="vision-bar ${i + 1 === active ? 'active' : ''}"
+      onclick="showVisionYear(${i + 1})" aria-label="Tahun ${i + 1}">
+      <span class="vision-bar-fill" style="height:${h}%"></span>
+      <small>T${i + 1}</small></button>`;
+  }).join('');
+}
+renderVisionBars(1);
+
+const bspPaths = {
+  corporate: {
+    pros: [
+      'Struktur dan sistem sudah ada, jadi tinggal belajar dan mengikuti.',
+      'Stabilitas: income masuk setiap bulan.',
+      'Pengalaman dari senior dan kerja tim.',
+      'Networking, karena orang percaya pada nama perusahaan.'
+    ],
+    cons: [
+      'Pertumbuhan lewat sistem: ada salary band, budget, timing, dan siklus promosi.',
+      'Nilai yang kita ciptakan tidak selalu langsung berbanding lurus dengan income.',
+      'Kerja bisa terasa tanpa batas jam karena teknologi.',
+      'Waktu sama dengan income. Kalau tidak bisa bekerja, income akhirnya berhenti.',
+      'Naik jabatan berarti tim, target, dan tanggung jawab yang lebih besar.'
+    ]
+  },
+  bisnis: {
+    pros: [
+      'Ownership: keputusan ada di tangan sendiri.',
+      'Kebebasan dan kontrol lebih besar atas cara bekerja.',
+      'Potensi penghasilan tidak dibatasi grade gaji.',
+      'Kepuasan membangun sesuatu dari nol.'
+    ],
+    cons: [
+      'Capital: omset besar biasanya butuh modal besar.',
+      'People: merekrut, melatih, dan risiko ditinggalkan.',
+      'Operations: sistem dan trial and error harus dibangun sendiri.',
+      'Risk dan cash flow harus selalu dijaga.',
+      'Semua masalah (supplier, staf, penjualan, pajak) menjadi masalah pemilik.'
+    ]
+  }
+};
+
+function showBspPath(key) {
+  const data = bspPaths[key];
+  const box = document.getElementById('bspPath');
+  if (!data || !box) return;
+
+  box.innerHTML = `
+    <div class="bsp-col">
+      <h3>✅ Kelebihan</h3>
+      <ul>${data.pros.map(x => `<li>${x}</li>`).join('')}</ul>
+    </div>
+    <div class="bsp-col">
+      <h3>⚖️ Harga yang dibayar</h3>
+      <ul>${data.cons.map(x => `<li>${x}</li>`).join('')}</ul>
+    </div>`;
+
+  document.querySelectorAll('.bsp-tab').forEach(b =>
+    b.classList.toggle('active', b.dataset.path === key)
+  );
+}
+showBspPath('corporate');
+
+// Isi nomor WhatsApp agen (format 62812xxxxxxx, tanpa + dan tanpa 0 di depan).
+// Isi hanya dengan nomor agen asli yang SUDAH memberi izin.
+const agentWA = {
+  'Agen Demo 01': '6281219792924',
+  'Agen Demo 02': '6281234567890',
+  'Agen Demo 03': '6281234567891'
+};
+
+function openWhatsApp(name, text) {
+  const num = agentWA[name];
+  if (!num) {
+    alert('Nomor WhatsApp untuk ' + name + ' belum diisi. Ini masih data demo.');
+    return;
+  }
+  window.open(
+    'https://wa.me/' + num + '?text=' + encodeURIComponent(text),
+    '_blank', 'noopener'
+  );
+}
+
+function setAgentArea(area, btn) {
+  document.getElementById('agentSearch').value = area;
+  filterAgents();
+  document.querySelectorAll('.agent-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+document.querySelectorAll('.agent').forEach(card => {
+  const name = card.querySelector('h3').textContent
+    .replace('👤', '').replace('Profil', '').trim();
+
+  const wrap = document.createElement('div');
+  wrap.className = 'agent-actions';
+
+  const chatBtn = card.querySelector('button');
+  wrap.appendChild(chatBtn);
+
+  const wa = document.createElement('button');
+  wa.type = 'button';
+  wa.className = 'btn btn-wa';
+  wa.textContent = 'WhatsApp';
+  wa.onclick = () => openWhatsApp(
+    name, 'Halo, saya melihat profil Anda di cariDOit dan ingin bertanya.'
+  );
+  wrap.appendChild(wa);
+
+  card.appendChild(wrap);
+});
+let lastChatText = '';
+
+const chatAnswers = {
+  'Apa itu Layar Biru Vision?':
+    'Layar Biru Vision adalah materi sistem bisnis yang menggambarkan tahapan perkembangan bisnis dan proyeksi income dalam perjalanan keagenan Vision. Kamu bisa melihatnya di halaman Layar Biru Vision.',
+  'Bagaimana jalur magang?':
+    'Tersedia posisi Business Executive, Web Developer, dan UI/UX Designer. Lihat detailnya di halaman Informasi Magang, lalu isi formulir minat.',
+  'Bagaimana menjadi agen?':
+    'Perjalanan agen dimulai dari Business Executive (BE), lalu bisa berkembang ke Business Partner (BP) sesuai persyaratan dan ketentuan Vision. Detail resminya perlu dikonfirmasi ke pihak Vision.',
+  'Apakah income pasti?':
+    'Tidak. Penghasilan agen berasal dari komisi atau kompensasi sesuai hasil dan ketentuan yang berlaku, bukan gaji tetap. Angka di Layar Biru adalah proyeksi, bukan jaminan.'
+};
+
+function addChatMsg(text, mine) {
+  const box = document.getElementById('messages');
+  const d = document.createElement('div');
+  d.className = 'message' + (mine ? ' mine' : '');
+
+  const p = document.createElement('span');
+  p.textContent = text;
+
+  const t = document.createElement('small');
+  t.className = 'msg-time';
+  t.textContent = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+  d.appendChild(p);
+  d.appendChild(t);
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function botReply(question) {
+  const box = document.getElementById('messages');
+  const typing = document.createElement('div');
+  typing.className = 'message typing';
+  typing.textContent = 'Mengetik…';
+  box.appendChild(typing);
+  box.scrollTop = box.scrollHeight;
+
+  setTimeout(() => {
+    typing.remove();
+    addChatMsg(
+      chatAnswers[question] ||
+      'Pertanyaan ini akan dijawab langsung oleh agen. Klik tombol "Lanjutkan ke WhatsApp" di bawah supaya pesanmu terkirim ke agen.',
+      false
+    );
+  }, 700);
+}
+
+document.getElementById('chatForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  addChatMsg(text, true);
+  lastChatText = text;
+  input.value = '';
+  botReply(text);
+});
+
+const quickBox = document.getElementById('quickReplies');
+Object.keys(chatAnswers).forEach(q => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'quick-reply';
+  b.textContent = q;
+  b.onclick = () => { lastChatText = q; addChatMsg(q, true); botReply(q); };
+  quickBox.appendChild(b);
+});
+
+function continueOnWhatsApp() {
+  const name = document.getElementById('chatTarget').textContent
+    .replace('·', '').replace('(demo)', '').trim();
+  openWhatsApp(
+    name,
+    lastChatText || 'Halo, saya ingin bertanya tentang peluang Vision.'
+  );
+}
+
+const pageNames = {
+  ebsi: 'Cashflow Quadrant', layar: 'Layar Biru Vision', bsp: 'Ringkasan BSP',
+  jalur: 'Pilih Jalur', agen: 'Cari Agen', chat: 'Chat Agen',
+  intern: 'Informasi Magang', bisnis: 'Business Opportunity'
+};
+const pageStack = [];
+const originalShowPage = showPage;
+
+showPage = function (id) {
+  const current = document.querySelector('.page.active');
+  if (current && current.id !== id) pageStack.push(current.id);
+  originalShowPage(id);
+  updateBackButtons();
+};
+
+function goBackPage() {
+  const prev = pageStack.pop();
+  originalShowPage(prev || 'home');
+  updateBackButtons();
+}
+
+function updateBackButtons() {
+  const prev = pageStack[pageStack.length - 1];
+  document.querySelectorAll('.back-prev').forEach(b => {
+    if (prev && prev !== 'home') {
+      b.textContent = '← Kembali ke ' + (pageNames[prev] || 'halaman sebelumnya');
+      b.classList.remove('hidden');
+    } else {
+      b.classList.add('hidden');
+    }
+  });
+}
+
+document.querySelectorAll('section.page').forEach(section => {
+  if (section.id === 'home') return;
+  const c = section.querySelector('.container');
+  if (!c) return;
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'back-home back-prev hidden';
+  b.onclick = goBackPage;
+  c.prepend(b);
+});
+const ENDPOINT_MAGANG = 'https://formspree.io/f/xppqvgpn';
+const ENDPOINT_AGEN   = 'https://formspree.io/f/mjygnqwg';
+
+async function kirimForm(form, endpoint, pesanEl, pesanSukses) {
+  if (endpoint.includes('GANTI')) {
+    pesanEl.textContent = 'Alamat Formspree belum diisi di kode.';
+    return false;
+  }
+  const btn = form.querySelector('button[type="submit"]');
+  const teksAsal = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Mengirim…';
+  pesanEl.textContent = '';
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body: (() => { const f = new FormData(form); f.delete('cv'); f.delete('portofolio_file'); return f; })(),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('gagal');
+    form.reset();
+    pesanEl.textContent = pesanSukses;
+    return true;
+  } catch (err) {
+    pesanEl.textContent = 'Maaf, data belum terkirim. Periksa koneksi lalu coba lagi.';
+    return false;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = teksAsal;
+  }
+}
+
+function setInternStep(n) {
+  document.querySelectorAll('.intern-step').forEach(s => {
+    const i = Number(s.dataset.step);
+    s.classList.toggle('done', i <= n);
+    s.classList.toggle('current', i === n + 1);
+  });
+}
+setInternStep(1);
+
+const originalSelectPosition = selectInternPosition;
+selectInternPosition = function (p) {
+  originalSelectPosition(p);
+  setInternStep(2);
+};
+
+document.querySelector('#internForm [name="bidang"]')
+  .addEventListener('change', e => setInternStep(e.target.value ? 2 : 1));
+
+function bacaBerkas(file) {
+  return new Promise(resolve => {
+    if (!file || !file.size) return resolve(null);
+    const r = new FileReader();
+    r.onload = () => resolve({ nama: file.name, tipe: file.type, data: String(r.result).split(',')[1] });
+    r.onerror = () => resolve(null);
+    r.readAsDataURL(file);
+  });
+}
+
+async function catatStatus(fd) {
+  if (STATUS_URL.includes('GANTI')) return;
+  const cv = await bacaBerkas(fd.get('cv'));
+  const porto = await bacaBerkas(fd.get('portofolio_file'));
+  const body = new URLSearchParams({
+    email: fd.get('email') || '',
+    nama: fd.get('nama') || '',
+    posisi: fd.get('bidang') || '',
+    pendidikan: fd.get('pendidikan') || '',
+    portolink: fd.get('portofolio') || ''
+  });
+  if (cv) { body.set('cv_nama', cv.nama); body.set('cv_tipe', cv.tipe); body.set('cv_data', cv.data); }
+  if (porto) { body.set('porto_nama', porto.nama); body.set('porto_tipe', porto.tipe); body.set('porto_data', porto.data); }
+  fetch(STATUS_URL, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+}
+
+function cekBerkas(form) {
+  const MAKS = 2 * 1024 * 1024;
+  const cv = form.querySelector('[name="cv"]').files[0];
+  const porto = form.querySelector('[name="portofolio_file"]').files[0];
+  const linkPorto = form.querySelector('[name="portofolio"]').value.trim();
+  const posisi = form.querySelector('[name="bidang"]').value;
+  if (!cv) return 'CV wajib diunggah.';
+  if (cv.size > MAKS) return 'Ukuran CV melebihi 2 MB.';
+  if (porto && porto.size > MAKS) return 'Ukuran portofolio melebihi 2 MB.';
+  if ((posisi === 'Web Developer' || posisi === 'UI/UX Designer') && !porto && !linkPorto) {
+    return 'Untuk posisi ini, portofolio wajib diisi (unggah file atau tulis tautannya).';
+  }
+  return '';
+}
+
+document.getElementById('internForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const pesan = document.getElementById('internMsg');
+  const err = cekBerkas(this);
+  if (err) { 
+    pesan.textContent = err; 
+    showToast(err, 'error');
+    return; 
+  }
+
+  const dataForm = new FormData(this);
+  const posisi = this.querySelector('[name="bidang"]').value;
+
+  const ok = await kirimForm(
+    this, ENDPOINT_MAGANG, pesan,
+    'Terima kasih! Minatmu sudah terkirim. Tunggu arahan dari penyelenggara melalui email.'
+  );
+  if (ok) {
+    catatStatus(dataForm);
+    setInternStep(3);
+    showToast('Formulir magang berhasil dikirim!', 'success');
+
+    // Simpan ke profil akun pengguna & database
+    const saved = localStorage.getItem('cariDOit_user');
+    if (saved) {
+      try {
+        const u = JSON.parse(saved);
+        u.internApplication = {
+          bidang: posisi,
+          submittedAt: new Date().toLocaleDateString('id-ID', { day:'numeric', month:'short', year:'numeric' })
+        };
+        localStorage.setItem('cariDOit_user', JSON.stringify(u));
+        // Update database akun
+        const db = getUsersDB();
+        const idx = db.findIndex(x => x.email.toLowerCase() === u.email.toLowerCase());
+        if (idx !== -1) {
+          db[idx].internApplication = u.internApplication;
+          saveUsersDB(db);
+        }
+      } catch(err){}
+    }
+  }
+});
+
+document.getElementById('agentInterestForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const goalEl = this.querySelector('[name="minat"]');
+  const minatText = goalEl ? goalEl.options[goalEl.selectedIndex].text : 'Informasi Umum';
+
+  const ok = await kirimForm(
+    this, ENDPOINT_AGEN, document.getElementById('agentInterestMsg'),
+    'Terima kasih! Minatmu sudah terkirim. Pihak penyelenggara akan menghubungimu.'
+  );
+  if (ok) {
+    showToast('Minat agen berhasil dikirim!', 'success');
+    const saved = localStorage.getItem('cariDOit_user');
+    if (saved) {
+      try {
+        const u = JSON.parse(saved);
+        u.agentInterest = {
+          minat: minatText,
+          submittedAt: new Date().toLocaleDateString('id-ID', { day:'numeric', month:'short', year:'numeric' })
+        };
+        localStorage.setItem('cariDOit_user', JSON.stringify(u));
+        const db = getUsersDB();
+        const idx = db.findIndex(x => x.email.toLowerCase() === u.email.toLowerCase());
+        if (idx !== -1) {
+          db[idx].agentInterest = u.agentInterest;
+          saveUsersDB(db);
+        }
+      } catch(err){}
+    }
+  }
+});
+
+const STATUS_URL = 'https://script.google.com/macros/s/AKfycbxE3ierYnrWY_DQzXJpZKxKOTNqadoHjqXi20sd5g7g1j1kBvO4ldMUlLj4V3ewjDHB/exec';
+
+const statusInfo = {
+  'terkirim':       { step: 3, text: 'Formulirmu sudah kami terima. Tunggu proses seleksi berkas.' },
+  'seleksi berkas': { step: 4, text: 'Berkasmu sedang diseleksi oleh penyelenggara.' },
+  'interview':      { step: 5, text: 'Kamu masuk tahap interview. Cek email untuk jadwalnya.' },
+  'lolos':          { step: 6, text: 'Selamat, kamu dinyatakan lolos! Tunggu arahan untuk mulai magang.' },
+  'mulai magang':   { step: 7, text: 'Selamat bergabung di program magang!' },
+  'tidak lolos':    { step: 6, text: 'Terima kasih sudah mendaftar. Untuk kali ini kamu belum lolos. Kamu boleh mendaftar lagi di kesempatan berikutnya.' }
+};
+
+async function cekStatus() {
+  const email = document.getElementById('statusEmail').value.trim();
+  const msg = document.getElementById('statusMsg');
+  const btn = document.getElementById('statusBtn');
+
+  if (!email) { msg.textContent = 'Isi email dulu.'; return; }
+  if (STATUS_URL.includes('GANTI')) { msg.textContent = 'URL status belum diisi di kode.'; return; }
+
+  btn.disabled = true;
+  msg.textContent = 'Mengecek…';
+  try {
+    const res = await fetch(STATUS_URL + '?email=' + encodeURIComponent(email));
+    const data = await res.json();
+    if (!data.found) {
+      msg.textContent = 'Email ini belum ditemukan. Pastikan sama dengan yang dipakai di formulir. Data baru bisa butuh waktu untuk tampil.';
+      return;
+    }
+    const info = statusInfo[data.status.toLowerCase()];
+    if (!info) { msg.textContent = 'Status: ' + data.status; return; }
+    setInternStep(info.step);
+    msg.textContent = info.text + (data.note ? ' Catatan: ' + data.note : '');
+  } catch (err) {
+    msg.textContent = 'Maaf, status belum bisa dicek. Coba lagi nanti.';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* ========================================================
+   TOAST NOTIFICATIONS & MOBILE NAV TOGGLE
+   ======================================================== */
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+
+  const icons = {
+    success: '✅',
+    error: '❌',
+    warning: '⚠️',
+    info: 'ℹ️'
+  };
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `<span>${icons[type] || 'ℹ️'}</span> <span>${message}</span>`;
+  container.appendChild(toast);
+
+  // Trigger animasi muncul
+  setTimeout(() => toast.classList.add('show'), 20);
+
+  // Hapus otomatis setelah 3.5 detik
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 350);
+  }, 3500);
+}
+
+function toggleMobileNav() {
+  const nav = document.getElementById('mainNav');
+  if (nav) nav.classList.toggle('mobile-open');
+}
+
+/* ========================================================
+   FITUR LOGIN / DEMO AUTHENTICATION & USER SESSION
+   ======================================================== */
+let currentAuthMode = 'login';
+
+function openAuthModal() {
+  document.getElementById('authModalOverlay').classList.add('active');
+  const saved = localStorage.getItem('cariDOit_user');
+  const closeBtn = document.getElementById('modalCloseBtn');
+  if (closeBtn) closeBtn.style.display = saved ? 'flex' : 'none';
+}
+
+function closeAuthModal() {
+  const saved = localStorage.getItem('cariDOit_user');
+  if (!saved) return; // Tidak bisa ditutup jika belum login
+  document.getElementById('authModalOverlay').classList.remove('active');
+  document.body.classList.remove('auth-locked');
+}
+
+function switchAuthTab(mode) {
+  currentAuthMode = mode;
+  const isLogin = mode === 'login';
+  document.getElementById('tabLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+  document.getElementById('authNameField').style.display = isLogin ? 'none' : 'block';
+  document.getElementById('authSubmitBtn').textContent = isLogin ? 'Masuk Sekarang' : 'Daftar & Masuk';
+  const sub = document.getElementById('authSubtitle');
+  if (sub) {
+    sub.textContent = isLogin 
+      ? 'Silakan masuk dengan akun yang sudah terdaftar.'
+      : 'Daftarkan akun barumu untuk mulai menjelajahi portal.';
+  }
+}
+
+// Simulasi database pengguna di localStorage
+function getUsersDB() {
+  try {
+    return JSON.parse(localStorage.getItem('cariDOit_accounts')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveUsersDB(users) {
+  localStorage.setItem('cariDOit_accounts', JSON.stringify(users));
+}
+
+function handleAuthSubmit(e) {
+  e.preventDefault();
+  const emailOrUser = document.getElementById('authEmailInput').value.trim();
+  const pass = document.getElementById('authPassInput').value;
+  const nameInput = document.getElementById('authNameInput').value.trim();
+  const users = getUsersDB();
+
+  if (currentAuthMode === 'register') {
+    // Mode Daftar Akun Baru
+    if (!nameInput) {
+      showToast('Mohon masukkan nama lengkap Anda.', 'warning');
+      return;
+    }
+    const exists = users.find(u => u.email.toLowerCase() === emailOrUser.toLowerCase());
+    if (exists) {
+      showToast('Email / Username sudah terdaftar! Silakan Masuk.', 'warning');
+      switchAuthTab('login');
+      return;
+    }
+
+    const newUser = {
+      name: nameInput,
+      email: emailOrUser,
+      password: pass,
+      internApplication: null,
+      agentInterest: null,
+      quizResult: null,
+      chatHistory: [],
+      createdAt: new Date().toISOString()
+    };
+    users.push(newUser);
+    saveUsersDB(users);
+    localStorage.setItem('cariDOit_user', JSON.stringify(newUser));
+    showToast('Pendaftaran akun berhasil! Selamat datang.', 'success');
+  } else {
+    // Mode Masuk / Login
+    let foundUser = users.find(u => 
+      u.email.toLowerCase() === emailOrUser.toLowerCase() && u.password === pass
+    );
+
+    // Jika belum ada di database lokal (contoh pengguna pertama kali), buat akun instan
+    if (!foundUser) {
+      if (users.length === 0) {
+        let displayName = emailOrUser.includes('@') ? emailOrUser.split('@')[0] : emailOrUser;
+        displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+        foundUser = {
+          name: displayName,
+          email: emailOrUser,
+          password: pass,
+          internApplication: null,
+          agentInterest: null,
+          quizResult: null,
+          chatHistory: [],
+          createdAt: new Date().toISOString()
+        };
+        users.push(foundUser);
+        saveUsersDB(users);
+      } else {
+        showToast('Email/Username atau Kata Sandi salah!', 'error');
+        return;
+      }
+    }
+    localStorage.setItem('cariDOit_user', JSON.stringify(foundUser));
+    showToast(`Berhasil masuk! Selamat datang, ${foundUser.name}.`, 'success');
+  }
+
+  updateAuthUI();
+  loadUserChatHistory();
+  const currentUser = JSON.parse(localStorage.getItem('cariDOit_user'));
+  addFloatingMessage(`Halo <strong>${currentUser.name}</strong>! Senang melihatmu kembali. Tanyakan apa saja seputar karier atau materi finansial.`, false, false);
+}
+
+function logoutUser() {
+  localStorage.removeItem('cariDOit_user');
+  updateAuthUI();
+  showToast('Anda telah keluar dari akun.', 'info');
+}
+
+function updateAuthUI() {
+  const saved = localStorage.getItem('cariDOit_user');
+  const overlay = document.getElementById('authModalOverlay');
+  const loginBtn = document.getElementById('navLoginBtn');
+  const userBadge = document.getElementById('navUserBadge');
+  const nameEl = document.getElementById('navUserName');
+  const avatarEl = document.getElementById('navAvatarChar');
+  const closeBtn = document.getElementById('modalCloseBtn');
+
+  if (saved) {
+    try {
+      const user = JSON.parse(saved);
+      document.body.classList.remove('auth-locked');
+      if (overlay) overlay.classList.remove('active');
+      if (closeBtn) closeBtn.style.display = 'flex';
+      if (loginBtn) loginBtn.style.display = 'none';
+      if (userBadge) {
+        userBadge.style.display = 'inline-flex';
+        nameEl.textContent = user.name;
+        avatarEl.textContent = user.name.charAt(0).toUpperCase();
+      }
+
+      // Isi form jika ada
+      const internNama = document.querySelector('#internForm [name="nama"]');
+      const internEmail = document.querySelector('#internForm [name="email"]');
+      if (internNama && !internNama.value) internNama.value = user.name;
+      if (internEmail && !internEmail.value && user.email.includes('@')) internEmail.value = user.email;
+
+      const agentNama = document.getElementById('agentName');
+      const agentEmail = document.getElementById('agentEmail');
+      if (agentNama && !agentNama.value) agentNama.value = user.name;
+      if (agentEmail && !agentEmail.value && user.email.includes('@')) agentEmail.value = user.email;
+    } catch (e) {
+      localStorage.removeItem('cariDOit_user');
+      updateAuthUI();
+    }
+  } else {
+    document.body.classList.add('auth-locked');
+    if (overlay) overlay.classList.add('active');
+    if (closeBtn) closeBtn.style.display = 'none';
+    if (loginBtn) loginBtn.style.display = 'inline-flex';
+    if (userBadge) userBadge.style.display = 'none';
+  }
+}
+
+// Inisialisasi Auth saat load
+updateAuthUI();
+
+/* ========================================================
+   USER DASHBOARD MODAL LOGIC
+   ======================================================== */
+function openUserDashboard() {
+  const saved = localStorage.getItem('cariDOit_user');
+  if (!saved) return;
+  const user = JSON.parse(saved);
+
+  document.getElementById('dashAvatarChar').textContent = user.name.charAt(0).toUpperCase();
+  document.getElementById('dashUserName').textContent = user.name;
+  document.getElementById('dashUserEmail').textContent = user.email;
+
+  // Cek pendaftaran magang
+  const internStatus = document.getElementById('dashInternStatus');
+  if (user.internApplication) {
+    internStatus.textContent = `Posisi: ${user.internApplication.bidang} (Terkirim)`;
+    internStatus.style.color = '#15803d';
+  } else {
+    internStatus.textContent = 'Belum Mendaftar';
+    internStatus.style.color = '#d97706';
+  }
+
+  // Cek minat agen
+  const agentStatus = document.getElementById('dashAgentStatus');
+  if (user.agentInterest) {
+    agentStatus.textContent = `Tertarik: ${user.agentInterest.minat} (Terkirim)`;
+    agentStatus.style.color = '#15803d';
+  } else {
+    agentStatus.textContent = 'Belum Ada';
+    agentStatus.style.color = '#64748b';
+  }
+
+  // Cek asesmen kuadran
+  const quizStatus = document.getElementById('dashQuizStatus');
+  if (user.quizResult) {
+    quizStatus.textContent = `Kuadran: ${user.quizResult}`;
+    quizStatus.style.color = '#1769d2';
+  } else {
+    quizStatus.textContent = 'Belum Mengikuti Tes';
+    quizStatus.style.color = '#64748b';
+  }
+
+  document.getElementById('dashboardModalOverlay').classList.add('active');
+}
+
+function closeUserDashboard() {
+  document.getElementById('dashboardModalOverlay').classList.remove('active');
+}
+
+/* ========================================================
+   MINI QUIZ / ASESMEN KUADRAN LOGIC
+   ======================================================== */
+const quizAnswers = {};
+
+function answerQuiz(step, val) {
+  quizAnswers['step' + step] = val;
+  document.getElementById('quizStep' + step).classList.remove('active');
+
+  if (step === 1) {
+    document.getElementById('quizStep2').classList.add('active');
+  } else if (step === 2) {
+    document.getElementById('quizStep3').classList.add('active');
+  } else if (step === 3) {
+    calculateQuizResult();
+  }
+}
+
+function calculateQuizResult() {
+  const s1 = quizAnswers.step1;
+  const s2 = quizAnswers.step2;
+  const resultCard = document.getElementById('quizResultCard');
+  let kuadran = 'E — Employee';
+  let desc = '';
+  let rek = '';
+  let btnAction = '';
+
+  if (s1 === 'E_MHS' || s2 === 'skill') {
+    kuadran = 'E — Employee (Persiapan Karier / Mahasiswa)';
+    desc = 'Kamu berada di fase akselerasi potensi! Mengembangkan pengalaman nyata, keterampilan profesional, dan koneksi kerja adalah fondasi paling penting saat ini.';
+    rek = '💡 <strong>Rekomendasi Terbaik:</strong> Ikuti <strong>Program Magang Vision</strong> (Business Executive / Web Developer / UI/UX) untuk mendapatkan uang saku, sertifikat, dan portofolio nyata!';
+    btnAction = `<button type="button" class="btn primary" onclick="showPage('intern')">Lihat Info Magang →</button>`;
+  } else if (s1 === 'E' || s2 === 'income') {
+    kuadran = 'Transisi Kuadran E → S / B (Membangun Bisnis)';
+    desc = 'Kamu sudah memiliki stabilitas kerja dasar, namun ingin mulai membangun diversifikasi income dan sistem bisnis mandiri agar tidak bergantung pada satu sumber gaji.';
+    rek = '💡 <strong>Rekomendasi Terbaik:</strong> Pelajari <strong>Layar Biru Vision</strong> dan peluang menjadi Business Executive (BE) untuk membangun komisi dan jenjang karier bisnis agen.';
+    btnAction = `<button type="button" class="btn primary" onclick="showPage('bisnis')">Lihat Business Opportunity →</button>`;
+  } else if (s1 === 'B' || s2 === 'system') {
+    kuadran = 'B — Business Owner (Pembangun Sistem)';
+    desc = 'Fokus utamamu adalah kepemimpinan, membina tim kerja, dan membuat sistem yang dapat berjalan tanpa kehadiran fisikmu 24/7.';
+    rek = '💡 <strong>Rekomendasi Terbaik:</strong> Diskusi langsung dengan Business Partner (BP) kami di halaman Cari Agen untuk kolaborasi ekspansi tim.';
+    btnAction = `<button type="button" class="btn primary" onclick="showPage('agen')">Hubungi Agen Senior →</button>`;
+  } else {
+    kuadran = 'I — Investor (Pengembangan Aset)';
+    desc = 'Kamu berorientasi pada bagaimana uang bekerja untukmu melalui instrumen aset dan cash flow berulang.';
+    rek = '💡 <strong>Rekomendasi Terbaik:</strong> Bergabunglah di komunitas <strong>Cashflow Club Indonesia (CCI)</strong> untuk memperdalam literasi instrumen aset.';
+    btnAction = `<a href="https://aturdoit.com/community" target="_blank" class="btn primary">Kunjungi Komunitas CCI ↗</a>`;
+  }
+
+  resultCard.innerHTML = `
+    <span class="tag" style="background:#f2b65c; color:#102b50; font-weight:bold;">HASIL ANALISIS KUADRANMU</span>
+    <h3 style="margin:12px 0 8px; font-size:22px;">${kuadran}</h3>
+    <p>${desc}</p>
+    <div style="background:rgba(255,255,255,0.12); border-left:3px solid #ff8b36; padding:12px 14px; border-radius:8px; margin:14px 0;">
+      ${rek}
+    </div>
+    <div style="margin-top:16px;">
+      ${btnAction}
+    </div>
+  `;
+
+  document.getElementById('quizResultStep').classList.add('active');
+
+  // Simpan hasil ke profil pengguna
+  const saved = localStorage.getItem('cariDOit_user');
+  if (saved) {
+    try {
+      const u = JSON.parse(saved);
+      u.quizResult = kuadran;
+      localStorage.setItem('cariDOit_user', JSON.stringify(u));
+    } catch(e){}
+  }
+}
+
+function resetQuiz() {
+  document.getElementById('quizResultStep').classList.remove('active');
+  document.getElementById('quizStep2').classList.remove('active');
+  document.getElementById('quizStep3').classList.remove('active');
+  document.getElementById('quizStep1').classList.add('active');
+}
+
+/* ========================================================
+   IMAGE LIGHTBOX LOGIC
+   ======================================================== */
+function openLightbox(src) {
+  const overlay = document.getElementById('imageLightboxOverlay');
+  const img = document.getElementById('lightboxActiveImg');
+  if (overlay && img) {
+    img.src = src;
+    overlay.classList.add('active');
+  }
+}
+
+function closeLightbox() {
+  const overlay = document.getElementById('imageLightboxOverlay');
+  if (overlay) overlay.classList.remove('active');
+}
+
+/* ========================================================
+   ENHANCED BOT KNOWLEDGE BASE & CHATBOT
+   ======================================================== */
+const floatingWindow = document.getElementById('floatingChatWindow');
+const floatingBody = document.getElementById('floatingChatBody');
+const chatUnreadDot = document.getElementById('chatUnreadDot');
+
+const botKnowledgeBase = {
+  'magang': 'Program Magang Vision menyediakan 3 posisi: 1) Business Executive (semua jurusan), 2) Web Developer (IT/Tech), dan 3) UI/UX Designer. Benefit meliputi uang transport per zona (Rp50.000/zona: Pagi, Siang, Malam), sertifikat resmi, networking, dan portofolio proyek!',
+  'posisi': 'Tersedia 3 posisi magang: Business Executive (terbuka semua jurusan, tanpa pengalaman), Web Developer (mahasiswa IT dengan pengalaman coding web), dan UI/UX Designer (mahasiswa IT/desain antarmuka).',
+  'transport': 'Uang transportasi magang diberikan Rp50.000 untuk setiap zona waktu yang kamu ikuti (Pagi, Siang, Malam). Jika kamu mengikuti 3 zona, total simulasi transport mencapai Rp150.000 per hari!',
+  'layar biru': 'Layar Biru Vision adalah peta sistem bisnis keagenan yang memaparkan proyeksi tahapan karier dari Business Executive (BE) hingga Business Partner (BP) serta ilustrasi pertumbuhan komisi dari tahun pertama (T1) hingga tahun ketujuh (T7). Kamu bisa melihat dan memperbesar gambarnya di halaman Layar Biru!',
+  'agen': 'Untuk menjadi agen asuransi melalui Vision, kamu memulai dari jenjang Business Executive (BE). Di sini kamu dibina melalui pelatihan dan kelas intensif sebelum dapat melangkah ke jenjang Business Partner (BP). Hubungi agen kami untuk konsultasi!',
+  'ebsi': 'Cashflow Quadrant (Robert Kiyosaki) mengklasifikasikan sumber penghasilan ke dalam 4 kuadran: E (Employee/Karyawan), S (Self-Employed/Profesional Mandiri), B (Business Owner/Pemilik Sistem), dan I (Investor/Penanam Modal). Di cariDOit, kami bantu kamu memahami cara bertransisi ke sisi kanan (B & I)!',
+  'biaya': 'Seluruh proses edukasi informasi, formulir minat magang, dan konsultasi di cariDOit GRATIS tanpa dipungut biaya apapun.',
+  'cci': 'Cashflow Club Indonesia (CCI) adalah komunitas edukasi finansial di bawah ekosistem DOit yang mempertemukan individu-individu untuk belajar cash flow, bermain Cashflow Board Game, dan mengembangkan literasi keuangan.',
+  'aturdoit': 'aturDOit adalah platform pengelolaan dan aplikasi keuangan personal yang membantu individu mencatat, merencanakan anggaran, dan mengontrol arus kas keuangan sehari-hari.',
+  'halo': 'Halo! Senang bisa menyapa Anda. Silakan tanyakan hal apa saja seputar program magang, jenjang karier agen, atau konsep edukasi finansial di cariDOit.',
+  'terima kasih': 'Sama-sama! Senang bisa membantu Anda. Jangan ragu bertanya lagi jika ada hal yang kurang jelas ya 😊'
+};
+
+function toggleFloatingChat() {
+  const isOpen = floatingWindow.classList.toggle('open');
+  if (isOpen) {
+    if (chatUnreadDot) chatUnreadDot.style.display = 'none';
+    const input = document.getElementById('floatingChatInput');
+    if (input) setTimeout(() => input.focus(), 150);
+  }
+}
+
+function loadUserChatHistory() {
+  const saved = localStorage.getItem('cariDOit_user');
+  if (!saved) return;
+  try {
+    const user = JSON.parse(saved);
+    if (user.chatHistory && user.chatHistory.length > 0) {
+      floatingBody.innerHTML = '';
+      user.chatHistory.forEach(item => {
+        const d = document.createElement('div');
+        d.className = 'message' + (item.isMine ? ' mine' : '');
+        d.innerHTML = `<span>${item.text}</span><small class="msg-time">${item.time || ''}</small>`;
+        floatingBody.appendChild(d);
+      });
+      floatingBody.scrollTop = floatingBody.scrollHeight;
+    }
+  } catch(e){}
+}
+
+function saveChatMessageToUser(text, isMine) {
+  const saved = localStorage.getItem('cariDOit_user');
+  if (!saved) return;
+  try {
+    const user = JSON.parse(saved);
+    if (!user.chatHistory) user.chatHistory = [];
+    user.chatHistory.push({
+      text: text,
+      isMine: isMine,
+      time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
+    });
+    // Simpan max 30 pesan terakhir
+    if (user.chatHistory.length > 30) user.chatHistory.shift();
+    localStorage.setItem('cariDOit_user', JSON.stringify(user));
+
+    const db = getUsersDB();
+    const idx = db.findIndex(x => x.email.toLowerCase() === user.email.toLowerCase());
+    if (idx !== -1) {
+      db[idx].chatHistory = user.chatHistory;
+      saveUsersDB(db);
+    }
+  } catch(e){}
+}
+
+function addFloatingMessage(text, isMine = false, shouldSave = true) {
+  const d = document.createElement('div');
+  d.className = 'message' + (isMine ? ' mine' : '');
+  
+  const content = document.createElement('span');
+  content.innerHTML = text;
+  
+  const time = document.createElement('small');
+  time.className = 'msg-time';
+  time.textContent = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+  d.appendChild(content);
+  d.appendChild(time);
+  floatingBody.appendChild(d);
+  floatingBody.scrollTop = floatingBody.scrollHeight;
+
+  if (shouldSave) {
+    saveChatMessageToUser(text, isMine);
+  }
+}
+
+function botReplyFloating(query) {
+  const typing = document.createElement('div');
+  typing.className = 'message';
+  typing.style.fontStyle = 'italic';
+  typing.style.color = '#64748b';
+  typing.textContent = 'Mengetik jawaban…';
+  floatingBody.appendChild(typing);
+  floatingBody.scrollTop = floatingBody.scrollHeight;
+
+  setTimeout(() => {
+    typing.remove();
+    const qLower = query.toLowerCase();
+    let reply = 'Terima kasih atas pertanyaannya! Tim cariDOit siap membantu. Kamu juga bisa mendiskusikan pertanyaan ini langsung dengan agen resmi melalui tombol WhatsApp di bawah.';
+
+    for (const [key, answer] of Object.entries(botKnowledgeBase)) {
+      if (qLower.includes(key)) {
+        reply = answer;
+        break;
+      }
+    }
+    addFloatingMessage(reply, false, true);
+  }, 600);
+}
+
+function handleFloatingSend(e) {
+  e.preventDefault();
+  const input = document.getElementById('floatingChatInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  addFloatingMessage(text, true, true);
+  input.value = '';
+  botReplyFloating(text);
+}
+
+function sendFloatingQuick(question) {
+  addFloatingMessage(question, true, true);
+  botReplyFloating(question);
+}
+
+// Muat riwayat chat saat inisialisasi awal
+loadUserChatHistory();
+</script>
+</body>
+</html>
